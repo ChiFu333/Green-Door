@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void HandleInput() {
-        if (!isInputLocked && Input.GetMouseButtonDown(0) && CanWalkToMouse()) {
+        if (!isInputLocked && !DialogueSystem.inst.isDialogueOngoing && Input.GetMouseButtonDown(0) && CanWalkToMouse()) {
             targetPosition = ScreenUtils.WorldMouse();
             arrivalCallback = null;
             currentMovementType = MovementType.Mouse;

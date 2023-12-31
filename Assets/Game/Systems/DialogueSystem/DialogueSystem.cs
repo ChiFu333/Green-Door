@@ -1,50 +1,101 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class DialogueSystem : MonoBehaviour {
-    [SerializeField] private Sprite[] faces = new Sprite[6];
-    [SerializeField] private GameObject[] imageBoxes = new GameObject[2];
-    [SerializeField] private GameObject TextLabel;
-    [SerializeField] private Color[] colors = new Color[2];
-    [SerializeField] private GameObject clickPanel;
-    [SerializeField] private float symbolDelay = 0.02f;
+    public static DialogueSystem inst { get; private set; }
 
+    private float symbolDelay;
+    private DialogueSO currentDialogue;
+    private int phraseIndex;
+    private Phrase currentPhrase;
+    private bool isTextAnimationPlaying;
+    public bool isDialogueOngoing { get; private set; }
+    //View
+    private Canvas dialogueCanvas;
+    private GameObject textPanel;
     private TMP_Text text;
-    private int faceId = 0;
+    private GameObject leftImageBox, rightImageBox;
+    private Image leftImage, rightImage;
 
-    public void SetFaceId(int id) {
-        faceId = id;
+    public void Setup(float _symbolDelay,Canvas _dialogueCanvas, GameObject _textPanel, GameObject _leftImageBox, GameObject _rightImageBox) {
+        symbolDelay = _symbolDelay;
+        dialogueCanvas = _dialogueCanvas;
+        textPanel = _textPanel;
+        text = textPanel.GetComponentInChildren<TMP_Text>();
+        leftImageBox = _leftImageBox; rightImageBox = _rightImageBox;
+        leftImage = leftImageBox.transform.GetChild(0).GetComponent<Image>();
+        rightImage = rightImageBox.transform.GetChild(0).GetComponent<Image>();
     }
 
-    public void PushText(string message) //0-2 - лица гг, 3-5 - лица кота
-    {
-        TextLabel.SetActive(true);
-        clickPanel.SetActive(true);
-        text = TextLabel.GetComponentInChildren<TMP_Text>();
-        text.color = faceId < 3 ? colors[0] : colors[1];
-        imageBoxes[0].SetActive(faceId < 3);
-        imageBoxes[1].SetActive(faceId > 2);
+    public void StartDialogue(DialogueSO dialogue) {
+        currentDialogue = dialogue;
+        isDialogueOngoing = true;
+        SetUIVisibility(true);
+        //Next phrase
+        phraseIndex = 0;
+        PlayNextPhrase();
+    }
+
+    private void PlayNextPhrase() {
+        currentPhrase = currentDialogue.phrases[phraseIndex];
+        phraseIndex++;
+        //Update visuals
+        if (currentPhrase.character.onRightSide) {
+            rightImage.sprite = currentPhrase.character.face;
+        } else {
+            leftImage.sprite = currentPhrase.character.face;
+        }
+        leftImageBox.SetActive(!currentPhrase.character.onRightSide);
+        rightImageBox.SetActive(currentPhrase.character.onRightSide);
+
+        text.color = currentPhrase.character.textColor;
         StopAllCoroutines();
-        StartCoroutine(WriteText(message));
+        StartCoroutine(WritePhraseText(currentPhrase.text));
     }
 
-    public void HideUI() {
-        imageBoxes[0].SetActive(false);
-        imageBoxes[1].SetActive(false);
-        TextLabel.SetActive(false);
+    private void SetUIVisibility(bool isVisible) {
+        dialogueCanvas.gameObject.SetActive(isVisible);
     }
 
-    public IEnumerator WriteText(string message) {
-        text = TextLabel.GetComponentInChildren<TMP_Text>();
+    private void Update() {
+        if (isDialogueOngoing && Input.GetMouseButtonDown(0) && currentDialogue != null) {
+            if (phraseIndex == currentDialogue.phrases.Count) {
+                //End dialogue
+                SetUIVisibility(false);
+                isDialogueOngoing = false;
+            } else {
+                if (isTextAnimationPlaying) {
+                    //Skip text animation
+                    StopAllCoroutines();
+                    text.text = currentPhrase.text;
+                } else {
+                    PlayNextPhrase();
+                }
+            }
+        }
+    }
+
+    public IEnumerator WritePhraseText(string message) {
         int count = 0;
         Timer timer = new Timer();
-        //TODO: Test it
+        isTextAnimationPlaying = true;
         while (count < message.Length) {
             count++;
             text.text = message.Substring(0, count);
             timer.SetTime(symbolDelay);
             while (!timer.Execute()) yield return null;
+        }
+        isTextAnimationPlaying = false;
+        currentPhrase.callback.Invoke();
+    }
+
+    private void Awake() {
+        if (inst != null && inst != this) {
+            Destroy(this);
+        } else {
+            inst = this;
         }
     }
 }
