@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ItemDataSO : ScriptableObject {
     [field: SerializeField] public string label { get; private set; }

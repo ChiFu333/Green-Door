@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿
 public class Item {
     public ItemDataSO data;
+    public Item(ItemDataSO _data) {
+        data = _data;
+    }
 }

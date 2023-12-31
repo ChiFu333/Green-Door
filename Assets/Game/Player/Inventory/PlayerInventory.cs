@@ -1,13 +1,18 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour {
+    public static PlayerInventory inst { get; private set; }
     private const int slotsAmount = 4;
     [SerializeField] private Transform slotsHolder;
     [SerializeField] private ItemSlot slotPrefab;
 
     private readonly List<ItemSlot> slots = new List<ItemSlot>();
+
+    public void Setup(Transform _slotsHolder, ItemSlot _slotPrefab) {
+        slotsHolder = _slotsHolder;
+        slotPrefab = _slotPrefab;
+    }
 
     public void PickupItem(Item item) {
         //TODO: Check if item can be combined with something else
@@ -31,15 +36,23 @@ public class PlayerInventory : MonoBehaviour {
         throw new System.Exception("Not enough slots!");
     }
 
-    private void Start() {
-        InitializeSlots();
-    }
 
     private void InitializeSlots() {
         for (int i = 0; i < slotsAmount; i++) {
             GameObject slotObject = Instantiate(slotPrefab.gameObject, slotsHolder, false);
             ItemSlot slot = slotObject.GetComponent<ItemSlot>();
             slots.Add(slot);
+        }
+    }
+    private void Start() {
+        InitializeSlots();
+    }
+
+    private void Awake() {
+        if (inst != null && inst != this) {
+            Destroy(this);
+        } else {
+            inst = this;
         }
     }
 }

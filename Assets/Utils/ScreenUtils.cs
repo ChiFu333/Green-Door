@@ -52,7 +52,8 @@ public static class ScreenUtils {
     }
 
     public static List<GameObject> GetObjectsUnderMouse() {
-        RaycastHit2D[] hits = Physics2D.RaycastAll(WorldMouse(), cam.transform.position - (Vector3)WorldMouse());
+        Ray ray = GetCamera().ScreenPointToRay(Input.mousePosition);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(ray.origin,ray.direction);
         return hits.Select(i => i.collider.gameObject).ToList();
     }
 

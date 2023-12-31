@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour {
-    private const float minDetectableInput = 0.1f;
     [SerializeField] private float movementSpeed;
     [SerializeField] private float minTargetDistance;
     [Header("Perspective")]
@@ -16,8 +14,16 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private Rigidbody2D physicalBody;
 
     private MovementType currentMovementType;
-    Vector2 currentInput;
+    private bool isInputLocked = false;
     private Vector2 targetPosition;
+    private UnityAction arrivalCallback;
+
+    public void MoveTo(Vector2 _targetPosition, UnityAction callback) {
+        targetPosition = _targetPosition;
+        arrivalCallback = callback;
+        currentMovementType = MovementType.Mouse;
+        isInputLocked = true;
+    }
 
     private void Update() {
         HandleInput();
@@ -26,27 +32,28 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void HandleInput() {
-        if (Input.GetMouseButtonDown(0) && CanWalkToMouse()) {
+        if (!isInputLocked && Input.GetMouseButtonDown(0) && CanWalkToMouse()) {
             targetPosition = ScreenUtils.WorldMouse();
+            arrivalCallback = null;
             currentMovementType = MovementType.Mouse;
         }
-        currentInput = GetKeyboardInput();
-        if (currentInput.sqrMagnitude > minDetectableInput) {
-            currentMovementType = MovementType.Keyboard;
-        }
+        isInputLocked = false;
     }
 
     private void HandleMovement() {
         switch (currentMovementType) {
-            case MovementType.Keyboard:
-                physicalBody.velocity = movementSpeed * currentInput * new Vector2(1, roomPerspectiveYModifier);
+            case MovementType.None:
+                physicalBody.velocity = Vector2.zero;
                 break;
             case MovementType.Mouse:
                 Vector2 direction = targetPosition - (Vector2)transform.position;
                 //Modify direction to account for perspective
                 direction.y /= roomPerspectiveYModifier;
                 physicalBody.velocity = movementSpeed * direction.normalized * new Vector2(1, roomPerspectiveYModifier);
-                if (Vector2.Distance(targetPosition, transform.position) < minTargetDistance) currentMovementType = MovementType.Keyboard;
+                if (Vector2.Distance(targetPosition, transform.position) < minTargetDistance) {
+                    arrivalCallback?.Invoke();
+                    currentMovementType = MovementType.None;
+                }
                 break;
         }
     }
@@ -63,12 +70,8 @@ public class PlayerController : MonoBehaviour {
         return collider == null || collider.isTrigger;
     }
 
-    private Vector2 GetKeyboardInput() {
-        return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-    }
-
     private enum MovementType {
-        Keyboard,
+        None,
         Mouse
     }
 }
