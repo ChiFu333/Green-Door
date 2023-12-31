@@ -15,8 +15,13 @@ public class PlayerInventory : MonoBehaviour {
         targetSlot.SetItem(item);
     }
 
-    public void RemoveItem() {
-        
+    public void RemoveItem(ItemDataSO itemData, bool removeAll = false) {
+        for (int i = 0; i < slotsAmount; i++) {
+            if (slots[i].GetItem().data.Equals(itemData)) {
+                slots[i].RemoveItem();
+                if (!removeAll) return;
+            }
+        }
     }
 
     private ItemSlot FindFreeSlot() {
