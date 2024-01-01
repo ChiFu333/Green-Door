@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour {
     [SerializeField] private float movementSpeed;
@@ -18,11 +19,12 @@ public class PlayerController : MonoBehaviour {
     private bool isInputLocked = false;
     private Vector2 targetPosition;
     private UnityAction arrivalCallback;
+    //Pathing
+    private NavMeshPath path;
+    private int pathIndex;
 
     public void MoveTo(Vector2 _targetPosition, UnityAction callback) {
-        targetPosition = _targetPosition;
-        arrivalCallback = callback;
-        currentMovementType = MovementType.Mouse;
+        HandleSettingTarget(_targetPosition, callback);
         isInputLocked = true;
     }
 
@@ -42,28 +44,41 @@ public class PlayerController : MonoBehaviour {
 
     private void HandleInput() {
         if (!isInputLocked && !DialogueSystem.inst.isDialogueOngoing && Input.GetMouseButtonDown(0) && CanWalkToMouse()) {
-            targetPosition = ScreenUtils.WorldMouse();
-            arrivalCallback = null;
-            currentMovementType = MovementType.Mouse;
+            HandleSettingTarget(ScreenUtils.WorldMouse(), null);
         }
         isInputLocked = false;
     }
 
+    private void HandleSettingTarget(Vector2 _targetPosition, UnityAction callback) {
+        arrivalCallback = callback;
+
+        path = new NavMeshPath();
+        bool isSuccessful = NavMesh.CalculatePath(GetPosition(), (Vector3)_targetPosition - legsPosition.localPosition,NavMesh.AllAreas,path);
+        currentMovementType = isSuccessful ? MovementType.Mouse : MovementType.None;
+        pathIndex = 1;
+    }
+
     private void HandleMovement() {
-        switch (currentMovementType) {
-            case MovementType.None:
-                physicalBody.velocity = Vector2.zero;
-                break;
-            case MovementType.Mouse:
-                Vector2 direction = targetPosition - (Vector2)transform.position;
-                //Modify direction to account for perspective
-                direction.y /= roomPerspectiveYModifier;
-                physicalBody.velocity = movementSpeed * direction.normalized * new Vector2(1, roomPerspectiveYModifier);
-                if (Vector2.Distance(targetPosition, transform.position) < minTargetDistance) {
-                    arrivalCallback?.Invoke();
-                    currentMovementType = MovementType.None;
-                }
-                break;
+        if (currentMovementType == MovementType.None) {
+            physicalBody.velocity = Vector2.zero;
+            return;
+        }
+        //Move to next point in path
+        targetPosition = path.corners[pathIndex];
+
+        Vector2 direction = targetPosition - (Vector2)transform.position;
+        //Modify direction to account for perspective
+        direction.y /= roomPerspectiveYModifier;
+        physicalBody.velocity = movementSpeed * direction.normalized * new Vector2(1, roomPerspectiveYModifier);
+        if (Vector2.Distance(targetPosition, transform.position) < minTargetDistance) {
+            //If point is last
+            if (pathIndex >= path.corners.Length - 1) {
+                arrivalCallback?.Invoke();
+                currentMovementType = MovementType.None;
+            } else {
+                //Goto next point
+                pathIndex++;
+            }
         }
     }
 
