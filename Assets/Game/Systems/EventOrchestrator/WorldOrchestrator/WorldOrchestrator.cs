@@ -7,13 +7,6 @@ public class WorldOrchestrator : EventOrchestrator {
     private bool isSchoolAlreadyVisited = false;
     private WorldOrchestratorData castedData;
 
-    #region Actions
-    public void UnlockDoor() {
-        isDoorUnlocked = true;
-        isSchoolAlreadyVisited = true;
-    }
-    #endregion
-
     #region StartHandling
     public override void Setup(OrchestratorDataSO data) {
         base.Setup(data);
@@ -52,10 +45,15 @@ public class WorldOrchestrator : EventOrchestrator {
         if (isSchoolAlreadyVisited) {
             //Should say something
         } else {
+            
             schoolDoorClickable.postCallback.AddListener(() => {
-                SceneLoader.inst.LoadScene("CheckTime");
+                isDoorUnlocked = true;
+                isSchoolAlreadyVisited = true;
+                DialogueSystem.inst.StartDialogue(castedData.checkTimeDialogue);
             });
-            schoolDoorClickable.callback.AddListener(UnlockDoor);
+            schoolDoorClickable.callback.AddListener(()=> {
+                
+            });
         }
     }
     private void HandleStreet() {
@@ -67,7 +65,7 @@ public class WorldOrchestrator : EventOrchestrator {
     }
 
     private void HandleTimeCheck() {
-        DialogueSystem.inst.StartDialogue(castedData.checkTimeDialogue);
+        
     }
     #endregion
 }

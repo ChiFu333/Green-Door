@@ -8,4 +8,5 @@ public class WorldOrchestratorData : OrchestratorDataSO {
     [field: SerializeField] public GameObject streetPropsPrefab { get; private set; }
 
     public void CheckTimeDialogueEnded() { SceneLoader.inst.LoadScene("School"); }
+    public void LoadCheckTimeScene() { SceneLoader.inst.LoadSceneDuringDialogue("CheckTime"); }
 }

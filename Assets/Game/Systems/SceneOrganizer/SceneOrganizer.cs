@@ -54,7 +54,12 @@ public class SceneOrganizer : MonoBehaviour {
         //Hide created UI
         dialogueCanvas.gameObject.SetActive(false);
         //Create manager
-        DialogueSystem dialogueSystem = InstantiateManager("Dialogue system", typeof(DialogueSystem)).GetComponent<DialogueSystem>();
+        DialogueSystem dialogueSystem;
+        if (DialogueSystem.inst == null) {
+            dialogueSystem = InstantiateManager("Dialogue system", typeof(DialogueSystem),false).GetComponent<DialogueSystem>();
+        } else {
+            dialogueSystem = DialogueSystem.inst;
+        }
         dialogueSystem.Setup(symbolDelay, dialogueCanvas, textPanel, leftImageBox, rightImageBox);
     }
 

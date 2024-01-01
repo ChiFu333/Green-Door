@@ -10,7 +10,7 @@ public class DialogueSystem : MonoBehaviour {
     private DialogueSO currentDialogue;
     private int phraseIndex;
     private Phrase currentPhrase;
-    private bool isTextAnimationPlaying;
+    private bool isTextAnimationPlaying, isPaused, wasUnpaused;
     public bool isDialogueOngoing { get; private set; }
     //View
     private Canvas dialogueCanvas;
@@ -27,6 +27,16 @@ public class DialogueSystem : MonoBehaviour {
         leftImageBox = _leftImageBox; rightImageBox = _rightImageBox;
         leftImage = leftImageBox.transform.GetChild(0).GetComponent<Image>();
         rightImage = rightImageBox.transform.GetChild(0).GetComponent<Image>();
+
+        if (wasUnpaused) {
+            ResumeDialogue();
+            wasUnpaused = false;
+        }
+    }
+
+    public void Pause(bool _isPaused) {
+        isPaused = _isPaused;
+        if (!isPaused) wasUnpaused = true;
     }
 
     public void StartDialogue(DialogueSO dialogue) {
@@ -35,6 +45,11 @@ public class DialogueSystem : MonoBehaviour {
         SetUIVisibility(true);
         //Next phrase
         phraseIndex = 0;
+        PlayNextPhrase();
+    }
+
+    private void ResumeDialogue() {
+        SetUIVisibility(true);
         PlayNextPhrase();
     }
 
@@ -63,17 +78,20 @@ public class DialogueSystem : MonoBehaviour {
         if (isDialogueOngoing && Input.GetMouseButtonDown(0) && currentDialogue != null) {
             if (phraseIndex == currentDialogue.phrases.Count) {
                 currentPhrase.callback.Invoke();
+                if (isPaused) return;
                 //End dialogue
                 SetUIVisibility(false);
                 isDialogueOngoing = false;
             } else {
                 if (isTextAnimationPlaying) {
+                    if (isPaused) return;
                     //Skip text animation
                     StopAllCoroutines();
                     text.text = currentPhrase.text;
                     isTextAnimationPlaying = false;
                 } else {
                     currentPhrase.callback.Invoke();
+                    if (isPaused) return;
                     PlayNextPhrase();
                 }
             }
@@ -98,6 +116,7 @@ public class DialogueSystem : MonoBehaviour {
             Destroy(this);
         } else {
             inst = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
 }

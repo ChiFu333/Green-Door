@@ -9,15 +9,20 @@ public class SceneLoader : MonoBehaviour {
     [SerializeField] private AnimationClip fadeoutClip;
     private Animation anim => GetComponent<Animation>();
 
-    public void LoadScene(int id) => StartCoroutine(FadeAndLoad(SceneUtility.GetScenePathByBuildIndex(id)));
-    public void LoadScene(string scene) => StartCoroutine(FadeAndLoad(scene));
+    public void LoadScene(int id) => StartCoroutine(FadeAndLoad(SceneUtility.GetScenePathByBuildIndex(id), false));
+    public void LoadScene(string scene) => StartCoroutine(FadeAndLoad(scene, false));
+    public void LoadSceneDuringDialogue(string scene) {
+        DialogueSystem.inst.Pause(true);
+        StartCoroutine(FadeAndLoad(scene, true));
+    }
 
-    private IEnumerator FadeAndLoad(string sceneName) {
+    private IEnumerator FadeAndLoad(string sceneName, bool doUnpause) {
         anim.clip = fadeoutClip;
         anim.Play();
         EventOrchestrator.inst.previousRoom = SceneManager.GetActiveScene().name;
         yield return new WaitForSeconds(timeToFade);
         SceneManager.LoadScene(sceneName);
+        if (doUnpause) DialogueSystem.inst.Pause(false);
     }
 
     private void Awake() {
