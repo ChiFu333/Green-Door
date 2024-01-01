@@ -15,9 +15,12 @@ public class WorldOrchestrator : EventOrchestrator {
 
     public override void HandleScenes() {
         //Handle spawn positioning
-        if (Player.inst != null) Player.inst.controller.TeleportTo(GetSpawnPosition());
-        //Handle per-scene logic
-        switch (SceneManager.GetActiveScene().name) {
+        if (Player.inst != null) {
+            Debug.Log("If scene is \"CheckTime\" - this is a bug");
+            Player.inst.controller.TeleportTo(GetSpawnPosition());
+        }
+            //Handle per-scene logic
+            switch (SceneManager.GetActiveScene().name) {
             case "MyHouse":
                 HandleHouse();
                 break;
