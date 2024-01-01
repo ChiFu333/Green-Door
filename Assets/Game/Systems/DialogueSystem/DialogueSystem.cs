@@ -19,7 +19,7 @@ public class DialogueSystem : MonoBehaviour {
     private GameObject leftImageBox, rightImageBox;
     private Image leftImage, rightImage;
 
-    public void Setup(float _symbolDelay,Canvas _dialogueCanvas, GameObject _textPanel, GameObject _leftImageBox, GameObject _rightImageBox) {
+    public void Setup(float _symbolDelay, Canvas _dialogueCanvas, GameObject _textPanel, GameObject _leftImageBox, GameObject _rightImageBox) {
         symbolDelay = _symbolDelay;
         dialogueCanvas = _dialogueCanvas;
         textPanel = _textPanel;
@@ -62,6 +62,7 @@ public class DialogueSystem : MonoBehaviour {
     private void Update() {
         if (isDialogueOngoing && Input.GetMouseButtonDown(0) && currentDialogue != null) {
             if (phraseIndex == currentDialogue.phrases.Count) {
+                currentPhrase.callback.Invoke();
                 //End dialogue
                 SetUIVisibility(false);
                 isDialogueOngoing = false;
@@ -70,7 +71,9 @@ public class DialogueSystem : MonoBehaviour {
                     //Skip text animation
                     StopAllCoroutines();
                     text.text = currentPhrase.text;
+                    isTextAnimationPlaying = false;
                 } else {
+                    currentPhrase.callback.Invoke();
                     PlayNextPhrase();
                 }
             }
@@ -88,7 +91,6 @@ public class DialogueSystem : MonoBehaviour {
             while (!timer.Execute()) yield return null;
         }
         isTextAnimationPlaying = false;
-        currentPhrase.callback.Invoke();
     }
 
     private void Awake() {

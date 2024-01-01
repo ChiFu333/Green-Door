@@ -5,6 +5,8 @@ public class SceneOrganizer : MonoBehaviour {
     [Header("Holders")]
     [SerializeField] private Transform managerHolder;
     [SerializeField] private Transform uiHolder;
+    [Header("Orchestrator")]
+    [SerializeField] private OrchestratorDataSO orchestratorData;
     [Header("Inventory")]
     [SerializeField] private Canvas inventoryCanvasPrefab;
     [SerializeField] private GameObject slotsHolderPrefab;
@@ -14,12 +16,17 @@ public class SceneOrganizer : MonoBehaviour {
     [SerializeField] private Canvas dialogueCanvasPrefab;
     [SerializeField] private GameObject textPanelPrefab;
     [SerializeField] private GameObject imageBoxPrefab;
-    [SerializeField] private DialogueSO sampleDialogue; 
 
     private void Awake() {
+        SetupOrchestrator(orchestratorData);
         SetupInventory();
         SetupInteractionSystem();
         SetupDialogueSystem();
+    }
+
+    private void SetupOrchestrator(OrchestratorDataSO data) {
+        EventOrchestrator orchestrator = InstantiateManager("Orchestrator", Type.GetType(data.orchestratorType), false).GetComponent<EventOrchestrator>();
+        orchestrator.Setup(data);
     }
 
     private void SetupInventory() {
@@ -49,8 +56,6 @@ public class SceneOrganizer : MonoBehaviour {
         //Create manager
         DialogueSystem dialogueSystem = InstantiateManager("Dialogue system", typeof(DialogueSystem)).GetComponent<DialogueSystem>();
         dialogueSystem.Setup(symbolDelay, dialogueCanvas, textPanel, leftImageBox, rightImageBox);
-
-        dialogueSystem.StartDialogue(sampleDialogue);
     }
 
     private Canvas CreateCanvas(string name, GameObject canvasPrefab) {
@@ -60,10 +65,14 @@ public class SceneOrganizer : MonoBehaviour {
         return canvas;
     }
 
-    private GameObject InstantiateManager(string name, Type componentType) {
+    private GameObject InstantiateManager(string name, Type componentType, bool doParent = true) {
         GameObject newObject = new GameObject(name);
-        newObject.transform.parent = managerHolder;
+        if (doParent) newObject.transform.parent = managerHolder;
         newObject.AddComponent(componentType);
         return newObject;
+    }
+
+    private void Start() {
+        EventOrchestrator.inst.HandleScenes();
     }
 }

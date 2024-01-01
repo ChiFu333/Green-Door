@@ -24,4 +24,16 @@ MonoBehaviour:
       3 \u0447\u0430\u0441\u0430..."
     <callback>k__BackingField:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: afe48f116d6869a47bfc55500f4f6c85, type: 2}
+          m_TargetAssemblyTypeName: WorldOrchestratorData, Assembly-CSharp
+          m_MethodName: CheckTimeDialogueEnded
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2

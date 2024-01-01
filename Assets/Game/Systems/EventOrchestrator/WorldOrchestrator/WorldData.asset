@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4891078919eac04c939a87d6cc0244c, type: 3}
+  m_Name: WorldData
+  m_EditorClassIdentifier: 
+  <orchestratorType>k__BackingField: WorldOrchestrator
+  <initialDialogue>k__BackingField: {fileID: 11400000, guid: 344cc69ab7de51d4e8b3717c4dc31ed2, type: 2}
+  <checkTimeDialogue>k__BackingField: {fileID: 11400000, guid: 10c3142823dec5944a68b055107e3b6e, type: 2}
+  <greenDoorPrefab>k__BackingField: {fileID: 7167945832731378513, guid: 250f1694f12366145a87441345f789e5, type: 3}
+  <streetPropsPrefab>k__BackingField: {fileID: 7425997912848309408, guid: 251e0bdb35fb2fe42ad0f23d4488ccbd, type: 3}

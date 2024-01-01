@@ -15,6 +15,7 @@ public class SceneLoader : MonoBehaviour {
     private IEnumerator FadeAndLoad(string sceneName) {
         anim.clip = fadeoutClip;
         anim.Play();
+        EventOrchestrator.inst.previousRoom = SceneManager.GetActiveScene().name;
         yield return new WaitForSeconds(timeToFade);
         SceneManager.LoadScene(sceneName);
     }

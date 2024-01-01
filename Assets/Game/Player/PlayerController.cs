@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
     [Header("Imports")]
     [SerializeField] private Transform appearanceTransform;
     [SerializeField] private Rigidbody2D physicalBody;
+    [SerializeField] private Transform legsPosition;
 
     private MovementType currentMovementType;
     private bool isInputLocked = false;
@@ -23,6 +24,14 @@ public class PlayerController : MonoBehaviour {
         arrivalCallback = callback;
         currentMovementType = MovementType.Mouse;
         isInputLocked = true;
+    }
+
+    public void TeleportTo(Vector2 position) {
+        transform.position = (Vector3)position - legsPosition.localPosition;
+    }
+
+    public Vector2 GetPosition() {
+        return legsPosition.position;
     }
 
     private void Update() {
