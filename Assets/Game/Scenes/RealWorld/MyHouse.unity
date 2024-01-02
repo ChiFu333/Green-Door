@@ -1146,7 +1146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e470a6a08cd83d146b0da30e3f1dfbbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCursorState: {fileID: 0}
+  defaultCursorState: {fileID: 11400000, guid: cbae8bf470a3acc43ae4213f0a04a401, type: 2}
 --- !u!1 &1875099997
 GameObject:
   m_ObjectHideFlags: 0
