@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Water bucket
   m_EditorClassIdentifier: 
   <label>k__BackingField: Water bucket
-  <icon>k__BackingField: {fileID: 0}
+  <icon>k__BackingField: {fileID: -1286246032, guid: aa3bcc52d420ddd498a5576721e06924, type: 3}

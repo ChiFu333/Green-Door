@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SceneOrganizer : MonoBehaviour {
@@ -11,6 +13,7 @@ public class SceneOrganizer : MonoBehaviour {
     [SerializeField] private Canvas inventoryCanvasPrefab;
     [SerializeField] private GameObject slotsHolderPrefab;
     [SerializeField] private ItemSlot slotPrefab;
+    [SerializeField] private List<ItemCombinationSO> itemCombinations = new List<ItemCombinationSO>();
     [Header("Dialogue")]
     [SerializeField] private float symbolDelay = 0.02f;
     [SerializeField] private Canvas dialogueCanvasPrefab;
@@ -22,6 +25,7 @@ public class SceneOrganizer : MonoBehaviour {
         SetupInventory();
         SetupInteractionSystem();
         SetupDialogueSystem();
+        
     }
 
     private void SetupOrchestrator(OrchestratorDataSO data) {
@@ -35,7 +39,7 @@ public class SceneOrganizer : MonoBehaviour {
         GameObject slotsHolder = Instantiate(slotsHolderPrefab, inventoryCanvas.transform);
         //Create manager
         PlayerInventory inventory = InstantiateManager("Inventory system",typeof(PlayerInventory)).GetComponent<PlayerInventory>();
-        inventory.Setup(slotsHolder.transform, slotPrefab);
+        inventory.Setup(slotsHolder.transform, slotPrefab, itemCombinations);
     }
 
     private void SetupInteractionSystem() {

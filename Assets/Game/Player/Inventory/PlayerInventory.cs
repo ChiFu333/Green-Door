@@ -4,31 +4,48 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour {
     public static PlayerInventory inst { get; private set; }
     private const int slotsAmount = 4;
-    [SerializeField] private Transform slotsHolder;
-    [SerializeField] private ItemSlot slotPrefab;
+
+    private Transform slotsHolder;
+    private ItemSlot slotPrefab;
+    private List<ItemCombinationSO> itemCombinations;
 
     private readonly List<ItemSlot> slots = new List<ItemSlot>();
 
-    public void Setup(Transform _slotsHolder, ItemSlot _slotPrefab) {
+    public void Setup(Transform _slotsHolder, ItemSlot _slotPrefab, List<ItemCombinationSO> _itemCombinations) {
         slotsHolder = _slotsHolder;
         slotPrefab = _slotPrefab;
+        itemCombinations = _itemCombinations;
     }
 
     public void PickupItem(Item item) {
-        //TODO: Check if item can be combined with something else
+        //Check if item can be combined with something else
+        for (int i = 0; i < itemCombinations.Count; i++) {
+            if (!itemCombinations[i].IsItemRequired(item.data)) continue;
+            //Item is required, check if enough items for combination, using current items and item added
+            List<ItemDataSO> itemDatas = GetItemDatas();
+            itemDatas.Add(item.data);
+            if (!itemCombinations[i].IsEnoughItems(itemDatas)) continue;
+            //There is enough items, combine and do not add item to inventory
+            ApplyCombination(itemCombinations[i]);
+            return;
+        }
+        //Item cannot be combined, just add to inventory
         ItemSlot targetSlot = FindFreeSlot();
         targetSlot.SetItem(item);
     }
 
     public void RemoveItem(ItemDataSO itemData, bool removeAll = false) {
         for (int i = 0; i < slotsAmount; i++) {
-            if (slots[i].GetItem().data.Equals(itemData)) {
+            Item item = slots[i].GetItem();
+            if (item == null) continue;
+            if (item.data.Equals(itemData)) {
                 slots[i].RemoveItem();
                 if (!removeAll) return;
             }
         }
     }
 
+    #region Internal
     private ItemSlot FindFreeSlot() {
         for (int i = 0; i < slotsAmount; i++) {
             if (slots[i].IsFree()) return slots[i];
@@ -36,6 +53,20 @@ public class PlayerInventory : MonoBehaviour {
         throw new System.Exception("Not enough slots!");
     }
 
+    private void ApplyCombination(ItemCombinationSO combination) {
+        RemoveItem(combination.firstObject);
+        RemoveItem(combination.secondObject);
+        PickupItem(new Item(combination.resultingObject));
+    }
+
+    private List<ItemDataSO> GetItemDatas() {
+        List<ItemDataSO> datas = new List<ItemDataSO>();
+        for (int i = 0; i < slotsAmount; i++) {
+            Item item = slots[i].GetItem();
+            if (item != null) datas.Add(item.data);
+        }
+        return datas;
+    }
 
     private void InitializeSlots() {
         for (int i = 0; i < slotsAmount; i++) {
@@ -44,6 +75,9 @@ public class PlayerInventory : MonoBehaviour {
             slots.Add(slot);
         }
     }
+    #endregion
+
+    #region Initialization
     private void Start() {
         InitializeSlots();
     }
@@ -55,4 +89,5 @@ public class PlayerInventory : MonoBehaviour {
             inst = this;
         }
     }
+    #endregion
 }
