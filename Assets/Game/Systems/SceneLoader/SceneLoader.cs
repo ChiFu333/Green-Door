@@ -19,7 +19,7 @@ public class SceneLoader : MonoBehaviour {
     private IEnumerator FadeAndLoad(string sceneName, bool doUnpause) {
         anim.clip = fadeoutClip;
         anim.Play();
-        EventOrchestrator.inst.previousRoom = SceneManager.GetActiveScene().name;
+        if (EventOrchestrator.inst != null) EventOrchestrator.inst.previousRoom = SceneManager.GetActiveScene().name;
         yield return new WaitForSeconds(timeToFade);
         SceneManager.LoadScene(sceneName);
         if (doUnpause) DialogueSystem.inst.Pause(false);
