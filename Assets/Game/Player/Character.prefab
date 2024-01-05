@@ -99,6 +99,10 @@ MonoBehaviour:
   roomPerspectiveYModifier: 0.5
   roomPerspectiveScaleModifier: 0.25
   scaleRange: {x: 0.5, y: 2}
+  animator: {fileID: 8375530244278897530}
+  idleAnimation: {fileID: 11400000, guid: fa7d4e52b0773054d91ae5a4616d7bf5, type: 2}
+  walkRightAnimation: {fileID: 11400000, guid: cce36c4ae49500f44967b95a23e59367, type: 2}
+  walkLeftAnimation: {fileID: 11400000, guid: cce36c4ae49500f44967b95a23e59367, type: 2}
   appearanceTransform: {fileID: 8898388509670144241}
   physicalBody: {fileID: 8898388508984993510}
   legsPosition: {fileID: 1410524334201633166}
@@ -180,6 +184,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8898388510621305071}
+  - component: {fileID: 8375530244278897530}
   - component: {fileID: 8898388510621305070}
   m_Layer: 0
   m_Name: Appearance
@@ -203,6 +208,19 @@ Transform:
   m_Father: {fileID: 8898388509670144241}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8375530244278897530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8898388510621305072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdbb55f2b8e3f3f46924097399fae124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 8898388510621305070}
 --- !u!212 &8898388510621305070
 SpriteRenderer:
   m_ObjectHideFlags: 0

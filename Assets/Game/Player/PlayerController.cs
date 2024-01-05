@@ -10,6 +10,11 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float roomPerspectiveYModifier;
     [SerializeField] private float roomPerspectiveScaleModifier;
     [SerializeField] private Vector2 scaleRange;
+    [Header("Animation")]
+    [SerializeField] private CharacterAnimator animator;
+    [SerializeField] private AnimationDataSO idleAnimation;
+    [SerializeField] private AnimationDataSO walkRightAnimation;
+    [SerializeField] private AnimationDataSO walkLeftAnimation;
     [Header("Imports")]
     [SerializeField] private Transform appearanceTransform;
     [SerializeField] private Rigidbody2D physicalBody;
@@ -61,6 +66,7 @@ public class PlayerController : MonoBehaviour {
     private void HandleMovement() {
         if (currentMovementType == MovementType.None) {
             physicalBody.velocity = Vector2.zero;
+            animator.SetAnimation(idleAnimation, false);
             return;
         }
         //Move to next point in path
@@ -70,6 +76,7 @@ public class PlayerController : MonoBehaviour {
         //Modify direction to account for perspective
         direction.y /= roomPerspectiveYModifier;
         physicalBody.velocity = movementSpeed * direction.normalized * new Vector2(1, roomPerspectiveYModifier);
+        animator.SetAnimation(direction.normalized.x > 0 ? walkRightAnimation : walkLeftAnimation, false);
         if (Vector2.Distance(targetPosition, transform.position) < minTargetDistance) {
             //If point is last
             if (pathIndex >= path.corners.Length - 1) {
