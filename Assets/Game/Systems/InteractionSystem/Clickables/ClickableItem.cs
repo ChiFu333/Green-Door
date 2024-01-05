@@ -7,6 +7,7 @@ public class ClickableItem : ClickableThing {
         base.HandleClick();
         Player.inst.controller.MoveTo(transform.position, () => {
             PlayerInventory.inst.PickupItem(new Item(itemData));
+            Destroy(gameObject);
         });
     }
 }
