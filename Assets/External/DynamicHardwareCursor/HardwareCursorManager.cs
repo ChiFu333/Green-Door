@@ -42,6 +42,8 @@ public class HardwareCursorManager : MonoBehaviour {
             if (changers.Count >= 1) {
                 currentHoveredChanger = changers[0];
                 currentHoveredChanger.SetCursor();
+            } else {
+                ResetCursor();
             }
             return;
         }

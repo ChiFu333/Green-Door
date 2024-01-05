@@ -11,11 +11,32 @@ public class PlayerInventory : MonoBehaviour {
 
     private readonly List<ItemSlot> slots = new List<ItemSlot>();
 
+    #region Managing
     public void Setup(Transform _slotsHolder, ItemSlot _slotPrefab, List<ItemCombinationSO> _itemCombinations) {
         slotsHolder = _slotsHolder;
         slotPrefab = _slotPrefab;
         itemCombinations = _itemCombinations;
     }
+
+    public void InitializeSlots() {
+        for (int i = 0; i < slotsAmount; i++) {
+            GameObject slotObject = Instantiate(slotPrefab.gameObject, slotsHolder, false);
+            ItemSlot slot = slotObject.GetComponent<ItemSlot>();
+            slots.Add(slot);
+        }
+    }
+
+    public void SaveState() {
+        GameManager.inst.playerItems = GetItems();
+    }
+
+    public void LoadState() {
+        List<Item> items = GameManager.inst.playerItems;
+        for (int i = 0; i < items.Count; i++) {
+            if (items[i] != null) slots[i].SetItem(items[i]);
+        }
+    }
+    #endregion
 
     public void PickupItem(Item item) {
         //Check if item can be combined with something else
@@ -59,6 +80,15 @@ public class PlayerInventory : MonoBehaviour {
         PickupItem(new Item(combination.resultingObject));
     }
 
+    private List<Item> GetItems() {
+        List<Item> items = new List<Item>();
+        for (int i = 0; i < slotsAmount; i++) {
+            Item item = slots[i].GetItem();
+            if (item != null) items.Add(item);
+        }
+        return items;
+    }
+
     private List<ItemDataSO> GetItemDatas() {
         List<ItemDataSO> datas = new List<ItemDataSO>();
         for (int i = 0; i < slotsAmount; i++) {
@@ -67,20 +97,10 @@ public class PlayerInventory : MonoBehaviour {
         }
         return datas;
     }
-
-    private void InitializeSlots() {
-        for (int i = 0; i < slotsAmount; i++) {
-            GameObject slotObject = Instantiate(slotPrefab.gameObject, slotsHolder, false);
-            ItemSlot slot = slotObject.GetComponent<ItemSlot>();
-            slots.Add(slot);
-        }
-    }
+    
     #endregion
 
     #region Initialization
-    private void Start() {
-        InitializeSlots();
-    }
 
     private void Awake() {
         if (inst != null && inst != this) {

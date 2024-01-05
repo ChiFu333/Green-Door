@@ -6,7 +6,7 @@ public class MenuManager : MonoBehaviour {
     
 
     public void Play() {
-        SceneLoader.inst.LoadScene(targetScene);
+        SceneLoader.inst.LoadScene(targetScene,false);
     }
 
     public void Settings() {
@@ -14,11 +14,11 @@ public class MenuManager : MonoBehaviour {
     }
 
     public void MusicVolumeSet(float value) {
-        
+        AudioManager.inst.SetMusicVolume(value);
     }
 
     public void SoundVolumeSet(float value) {
-
+        AudioManager.inst.SetSoundVolume(value);
     }
 
     public void Exit() {

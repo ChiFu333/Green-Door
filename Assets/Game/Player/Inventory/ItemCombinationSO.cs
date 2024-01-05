@@ -12,11 +12,11 @@ public class ItemCombinationSO : ScriptableObject {
     }
 
     public bool IsEnoughItems(List<ItemDataSO> items) {
-        int count = 0;
+        bool firstFound = false, secondFound = false;
         for (int i = 0; i < items.Count; i++) {
-            if (items[i] == firstObject) { count++; continue; }
-            if (items[i] == secondObject) { count++; continue; }
+            if (items[i] == firstObject) { firstFound = true; continue; }
+            if (items[i] == secondObject) { secondFound = true; continue; }
         }
-        return count == 2;
+        return firstFound && secondFound;
     }
 }

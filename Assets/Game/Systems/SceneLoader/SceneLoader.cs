@@ -9,14 +9,17 @@ public class SceneLoader : MonoBehaviour {
     [SerializeField] private AnimationClip fadeoutClip;
     private Animation anim => GetComponent<Animation>();
 
-    public void LoadScene(int id) => StartCoroutine(FadeAndLoad(SceneUtility.GetScenePathByBuildIndex(id), false));
-    public void LoadScene(string scene) => StartCoroutine(FadeAndLoad(scene, false));
-    public void LoadSceneDuringDialogue(string scene) {
+    public void LoadScene(int id, bool saveState = false) => StartCoroutine(FadeAndLoad(SceneUtility.GetScenePathByBuildIndex(id), false, saveState));
+    public void LoadScene(string scene, bool saveState = false) => StartCoroutine(FadeAndLoad(scene, false, saveState));
+    public void LoadSceneDuringDialogue(string scene, bool saveState) {
         DialogueSystem.inst.Pause(true);
-        StartCoroutine(FadeAndLoad(scene, true));
+        StartCoroutine(FadeAndLoad(scene, true, saveState));
     }
 
-    private IEnumerator FadeAndLoad(string sceneName, bool doUnpause) {
+    private IEnumerator FadeAndLoad(string sceneName, bool doUnpause, bool saveState) {
+        //Saving state
+        if (PlayerInventory.inst != null) PlayerInventory.inst.SaveState();
+        //Animation
         anim.clip = fadeoutClip;
         anim.Play();
         if (EventOrchestrator.inst != null) EventOrchestrator.inst.previousRoom = SceneManager.GetActiveScene().name;

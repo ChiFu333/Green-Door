@@ -7,8 +7,8 @@ public class WorldOrchestratorData : OrchestratorDataSO {
     [field: SerializeField] public GameObject greenDoorPrefab { get; private set; }
     [field: SerializeField] public GameObject streetPropsPrefab { get; private set; }
 
-    public void CheckTimeDialogueEnded() { SceneLoader.inst.LoadScene("School"); }
-    public void LoadCheckTimeScene() { SceneLoader.inst.LoadSceneDuringDialogue("CheckTime"); }
+    public void CheckTimeDialogueEnded() { SceneLoader.inst.LoadScene("School",true); }
+    public void LoadCheckTimeScene() { SceneLoader.inst.LoadSceneDuringDialogue("CheckTime", true); }
     public void PlaySound(AudioClip clip)
     {
         AudioManager AM = FindObjectOfType<AudioManager>();

@@ -21,6 +21,8 @@ public class SceneOrganizer : MonoBehaviour {
     [SerializeField] private GameObject imageBoxPrefab;
 
     private void Awake() {
+        //Create GameManager if not present
+        if (GameManager.inst == null) InstantiateManager("GameManager", typeof(GameManager), false);
         SetupOrchestrator(orchestratorData);
         SetupInventory();
         SetupInteractionSystem();
@@ -40,6 +42,9 @@ public class SceneOrganizer : MonoBehaviour {
         //Create manager
         PlayerInventory inventory = InstantiateManager("Inventory system",typeof(PlayerInventory)).GetComponent<PlayerInventory>();
         inventory.Setup(slotsHolder.transform, slotPrefab, itemCombinations);
+        inventory.InitializeSlots();
+        //Load items back
+        inventory.LoadState();
     }
 
     private void SetupInteractionSystem() {

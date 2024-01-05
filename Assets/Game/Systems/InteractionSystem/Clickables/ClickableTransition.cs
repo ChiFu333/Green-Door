@@ -7,6 +7,6 @@ public class ClickableTransition : ClickableThing {
     }
     public override void HandleInteraction() {
         base.HandleInteraction();
-        SceneLoader.inst.LoadScene(targetScene);
+        SceneLoader.inst.LoadScene(targetScene,true);
     }
 }
