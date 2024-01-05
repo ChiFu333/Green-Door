@@ -197,6 +197,7 @@ MonoBehaviour:
   inventoryCanvasPrefab: {fileID: 3919893337132096275, guid: 33cdc6fa8c9c1d949b0003cfa7902cfc, type: 3}
   slotsHolderPrefab: {fileID: 5146530564601898319, guid: d4c62b4436508214194f6832ce41f2b1, type: 3}
   slotPrefab: {fileID: 1306509647373501272, guid: e2b6d4b1ba889704c8982c9710bcb13f, type: 3}
+  itemCombinations: []
   symbolDelay: 0.02
   dialogueCanvasPrefab: {fileID: 3919893337132096275, guid: 33cdc6fa8c9c1d949b0003cfa7902cfc, type: 3}
   textPanelPrefab: {fileID: 461639731624153374, guid: 2a879d9cf184fd746adcfc619501363c, type: 3}
@@ -293,6 +294,7 @@ GameObject:
   - component: {fileID: 812892470}
   - component: {fileID: 812892472}
   - component: {fileID: 812892471}
+  - component: {fileID: 812892473}
   m_Layer: 0
   m_Name: StreetTransition
   m_TagString: Untagged
@@ -362,6 +364,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.763566, y: 4.082075}
   m_EdgeRadius: 0
+--- !u!114 &812892473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812892469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130315f6b95f3f244b8b1d8834f12d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursor: {fileID: 11400000, guid: 823613b03a5083248bed7733a574c012, type: 2}
+  isTemporal: 1
 --- !u!1 &900040219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,6 +1252,7 @@ GameObject:
   - component: {fileID: 1870980837}
   - component: {fileID: 1870980839}
   - component: {fileID: 1870980840}
+  - component: {fileID: 1870980841}
   m_Layer: 0
   m_Name: CheckTimeTransition
   m_TagString: Untagged
@@ -1305,6 +1322,20 @@ MonoBehaviour:
       m_Calls: []
   <key>k__BackingField: schoolDoor
   targetPosition: {fileID: 1659481418}
+--- !u!114 &1870980841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870980836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130315f6b95f3f244b8b1d8834f12d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursor: {fileID: 11400000, guid: 6a8a5bfe66f3d46499be41032ca383cc, type: 2}
+  isTemporal: 1
 --- !u!1 &1908247910
 GameObject:
   m_ObjectHideFlags: 0

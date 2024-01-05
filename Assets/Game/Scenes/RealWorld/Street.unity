@@ -538,6 +538,7 @@ MonoBehaviour:
   inventoryCanvasPrefab: {fileID: 3919893337132096275, guid: 33cdc6fa8c9c1d949b0003cfa7902cfc, type: 3}
   slotsHolderPrefab: {fileID: 5146530564601898319, guid: d4c62b4436508214194f6832ce41f2b1, type: 3}
   slotPrefab: {fileID: 1306509647373501272, guid: e2b6d4b1ba889704c8982c9710bcb13f, type: 3}
+  itemCombinations: []
   symbolDelay: 0.02
   dialogueCanvasPrefab: {fileID: 3919893337132096275, guid: 33cdc6fa8c9c1d949b0003cfa7902cfc, type: 3}
   textPanelPrefab: {fileID: 461639731624153374, guid: 2a879d9cf184fd746adcfc619501363c, type: 3}
@@ -1039,6 +1040,7 @@ GameObject:
   - component: {fileID: 1201879937}
   - component: {fileID: 1201879939}
   - component: {fileID: 1201879938}
+  - component: {fileID: 1201879940}
   m_Layer: 0
   m_Name: HomeTransition
   m_TagString: Untagged
@@ -1108,6 +1110,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.763566, y: 4.082075}
   m_EdgeRadius: 0
+--- !u!114 &1201879940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201879936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130315f6b95f3f244b8b1d8834f12d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursor: {fileID: 11400000, guid: 823613b03a5083248bed7733a574c012, type: 2}
+  isTemporal: 1
 --- !u!1 &1472183361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,6 +1392,7 @@ GameObject:
   - component: {fileID: 1713431257}
   - component: {fileID: 1713431259}
   - component: {fileID: 1713431258}
+  - component: {fileID: 1713431260}
   m_Layer: 0
   m_Name: SchoolTransition
   m_TagString: Untagged
@@ -1445,6 +1462,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.763566, y: 4.082075}
   m_EdgeRadius: 0
+--- !u!114 &1713431260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713431256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130315f6b95f3f244b8b1d8834f12d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursor: {fileID: 11400000, guid: bc85eec1f18d3784d81c3377ac3e24d8, type: 2}
+  isTemporal: 1
 --- !u!1001 &1808949709
 PrefabInstance:
   m_ObjectHideFlags: 0

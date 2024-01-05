@@ -9,4 +9,10 @@ public class WorldOrchestratorData : OrchestratorDataSO {
 
     public void CheckTimeDialogueEnded() { SceneLoader.inst.LoadScene("School"); }
     public void LoadCheckTimeScene() { SceneLoader.inst.LoadSceneDuringDialogue("CheckTime"); }
+    public void PlaySound(AudioClip clip)
+    {
+        AudioManager AM = FindObjectOfType<AudioManager>();
+        AudioQuery AQ = new AudioQuery(clip);
+        AM.Play(AQ);
+    }
 }
