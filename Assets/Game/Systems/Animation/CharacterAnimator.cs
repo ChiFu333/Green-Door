@@ -13,6 +13,7 @@ public class CharacterAnimator : MonoBehaviour
             currentAnimation = newAnimation;
             animationTimer.SetFrequency(currentAnimation.framerate);
             targetRenderer.sprite = currentAnimation.frames[0];
+            targetRenderer.transform.localPosition = currentAnimation.animationOffset;
             frame = 0;
         } else {
             currentAnimation = newAnimation;

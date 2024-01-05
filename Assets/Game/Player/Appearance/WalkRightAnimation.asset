@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <framerate>k__BackingField: 8
   <frames>k__BackingField:
-  - {fileID: 21300000, guid: 9afa826e36995f64f81f09364669ec4b, type: 3}
-  - {fileID: 21300000, guid: 172f1dc575274a546878be8b84682bb2, type: 3}
-  - {fileID: 21300000, guid: 7ed973190101a614781e3ee9bc573f1a, type: 3}
-  - {fileID: 21300000, guid: 52cfe0f8933cd7f4bb395855dd2d5510, type: 3}
-  - {fileID: 21300000, guid: 35c750dcc85933043bc835ceb2beb4aa, type: 3}
-  - {fileID: 21300000, guid: d4a13e3d89a2f6e4c9b2e98796ce4fc5, type: 3}
-  - {fileID: 21300000, guid: 316cc228f45e4214fa3f4fc9d9c85a52, type: 3}
-  - {fileID: 21300000, guid: b94cca44fa95a8740a685c4aed96be4d, type: 3}
+  - {fileID: 21300000, guid: 450437213a8bd2044a1f6d6f29e77f10, type: 3}
+  - {fileID: 21300000, guid: 40bd83f979652404db17650063b8a50e, type: 3}
+  - {fileID: 21300000, guid: 763b6f982e3f4494fa9d4aed78d8e51c, type: 3}
+  - {fileID: 21300000, guid: 8833e9acc71447f46ac1ab05d94c07ad, type: 3}
+  - {fileID: 21300000, guid: d31cf352f7e2e9746a9334c20e2e1611, type: 3}
+  - {fileID: 21300000, guid: 2665b355ea79b60439f5797e868cd9e6, type: 3}
+  - {fileID: 21300000, guid: bef007e903a9b824e8e4899529a54042, type: 3}
+  - {fileID: 21300000, guid: d99b1ef537c2e8d4aaab6a99b35e724d, type: 3}
+  <animationOffset>k__BackingField: {x: 0, y: -0.4}
