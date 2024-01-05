@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BottomLocation Cursor
   m_EditorClassIdentifier: 
   sprite: {fileID: 2800000, guid: 19404cc69629eed4bb51345cde7e2ba4, type: 3}
-  hotSpot: {x: 0, y: 0}
+  hotSpot: {x: 28, y: 0}

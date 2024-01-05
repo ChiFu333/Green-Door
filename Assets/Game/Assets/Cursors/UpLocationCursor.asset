@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: UpLocationCursor
   m_EditorClassIdentifier: 
   sprite: {fileID: 2800000, guid: 519cb70111a8e9941a52869bb09678b2, type: 3}
-  hotSpot: {x: 0, y: 0}
+  hotSpot: {x: 28, y: 0}
