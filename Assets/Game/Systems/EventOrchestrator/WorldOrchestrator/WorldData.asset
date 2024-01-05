@@ -15,5 +15,7 @@ MonoBehaviour:
   <orchestratorType>k__BackingField: WorldOrchestrator
   <initialDialogue>k__BackingField: {fileID: 11400000, guid: 344cc69ab7de51d4e8b3717c4dc31ed2, type: 2}
   <checkTimeDialogue>k__BackingField: {fileID: 11400000, guid: 10c3142823dec5944a68b055107e3b6e, type: 2}
+  <closedDoorDialoge>k__BackingField: {fileID: 11400000, guid: 3542dae091f17fd4b875a271d684467b, type: 2}
   <greenDoorPrefab>k__BackingField: {fileID: 7167945832731378513, guid: 250f1694f12366145a87441345f789e5, type: 3}
   <streetPropsPrefab>k__BackingField: {fileID: 7425997912848309408, guid: 251e0bdb35fb2fe42ad0f23d4488ccbd, type: 3}
+  <FirstMagicDialogue>k__BackingField: {fileID: 11400000, guid: 751f06f972b4df547bc429a63ff69419, type: 2}

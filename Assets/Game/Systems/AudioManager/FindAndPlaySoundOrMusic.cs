@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class FindAndPlaySoundOrMusic : MonoBehaviour
 {
-    [SerializeField] AudioClip musicClip;
+    [SerializeField] AudioClip clip;
+    [SerializeField] float volume = 1;
+    [SerializeField] bool isMusic = true;
     private void Start()
     {
-        PlayMusic(musicClip);
+        if(isMusic) PlayMusic(clip);
     }
     public void PlaySound(AudioClip clip)
     {
@@ -19,5 +21,7 @@ public class FindAndPlaySoundOrMusic : MonoBehaviour
     {
         AudioManager AM = FindObjectOfType<AudioManager>();
         AM.PlayMusic(clip);
+        if (volume == 0) volume = 1;
+        AM.SetMusicVolume(volume);
     }
 }

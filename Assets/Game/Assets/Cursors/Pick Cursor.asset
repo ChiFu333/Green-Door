@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9710c9c47956ae4f967c8fd386e8e7d, type: 3}
   m_Name: Pick Cursor
   m_EditorClassIdentifier: 
-  sprite: {fileID: 2800000, guid: 5684a1218e457c04f857a8791920e26c, type: 3}
+  sprite: {fileID: 2800000, guid: 43f9b987bcdc1144c949fad090224df8, type: 3}
   hotSpot: {x: 0, y: 0}

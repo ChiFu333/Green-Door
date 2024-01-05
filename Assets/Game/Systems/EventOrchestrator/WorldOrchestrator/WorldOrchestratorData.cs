@@ -9,6 +9,10 @@ public class WorldOrchestratorData : OrchestratorDataSO {
 
     public void CheckTimeDialogueEnded() { SceneLoader.inst.LoadScene("School",true); }
     public void LoadCheckTimeScene() { SceneLoader.inst.LoadSceneDuringDialogue("CheckTime", true); }
+
+    /// MAGIC WORLD ////////////////////////////////////////////////////////////////////////////////
+
+    [field: SerializeField] public DialogueSO FirstMagicDialogue { get; private set; }
     public void PlaySound(AudioClip clip)
     {
         AudioManager AM = FindObjectOfType<AudioManager>();

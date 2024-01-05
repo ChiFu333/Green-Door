@@ -334,7 +334,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0ba02f0c9c84194f95cbe768943d1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicClip: {fileID: 8300000, guid: adca8f18de0f0ce42a6cca4c022c4361, type: 3}
+  clip: {fileID: 8300000, guid: adca8f18de0f0ce42a6cca4c022c4361, type: 3}
+  volume: 1
+  isMusic: 1
 --- !u!4 &489644875
 Transform:
   m_ObjectHideFlags: 0
