@@ -56,6 +56,7 @@ public class DialogueSystem : MonoBehaviour {
     private void PlayNextPhrase() {
         currentPhrase = currentDialogue.phrases[phraseIndex];
         phraseIndex++;
+        currentPhrase.precallback.Invoke();
         //Update visuals
         if (currentPhrase.character.onRightSide) {
             rightImage.sprite = currentPhrase.character.face;
