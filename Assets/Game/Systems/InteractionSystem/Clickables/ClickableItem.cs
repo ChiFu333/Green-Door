@@ -8,7 +8,7 @@ public class ClickableItem : ClickableThing {
         base.HandleClick();
         Player.inst.controller.MoveTo(transform.position, () => {
             PlayerInventory.inst.PickupItem(new Item(itemData));
-            FindObjectOfType<AudioManager>().Play(new AudioQuery(itemTaked));
+            AudioManager.inst.Play(new AudioQuery(itemTaked));
             Destroy(gameObject);
         });
     }

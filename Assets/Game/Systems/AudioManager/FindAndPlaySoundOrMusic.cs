@@ -1,27 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class FindAndPlaySoundOrMusic : MonoBehaviour
-{
+public class FindAndPlaySoundOrMusic : MonoBehaviour {
     [SerializeField] AudioClip clip;
     [SerializeField] float volume = 1;
     [SerializeField] bool isMusic = true;
-    private void Start()
-    {
-        if(isMusic) PlayMusic(clip);
+    private void Start() {
+        if (isMusic) PlayMusic(clip);
     }
-    public void PlaySound(AudioClip clip)
-    {
-        AudioManager AM = FindObjectOfType<AudioManager>();
-        AudioQuery AQ = new AudioQuery(clip);
-        AM.Play(AQ);
+    public void PlaySound(AudioClip clip) {
+        AudioManager.inst.Play(new AudioQuery(clip));
     }
-    public void PlayMusic(AudioClip clip)
-    {
-        AudioManager AM = FindObjectOfType<AudioManager>();
-        AM.PlayMusic(clip);
+    public void PlayMusic(AudioClip clip) {
+        AudioManager.inst.PlayMusic(clip);
         if (volume == 0) volume = 1;
-        AM.SetMusicVolume(volume);
+        AudioManager.inst.SetMusicVolume(volume);
     }
 }

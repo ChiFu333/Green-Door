@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,13 +20,11 @@ public class SceneOrganizer : MonoBehaviour {
     [SerializeField] private GameObject imageBoxPrefab;
 
     private void Awake() {
-        //Create GameManager if not present
         if (GameManager.inst == null) InstantiateManager("GameManager", typeof(GameManager), false);
         SetupOrchestrator(orchestratorData);
         SetupInventory();
         SetupInteractionSystem();
         SetupDialogueSystem();
-        
     }
 
     private void SetupOrchestrator(OrchestratorDataSO data) {

@@ -384,7 +384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   managerHolder: {fileID: 2042657797}
   uiHolder: {fileID: 1699774500}
-  orchestratorData: {fileID: 11400000, guid: afe48f116d6869a47bfc55500f4f6c85, type: 2}
+  orchestratorData: {fileID: 11400000, guid: f5ed534e011fb184f8eb2fcde082d936, type: 2}
   inventoryCanvasPrefab: {fileID: 3919893337132096275, guid: 33cdc6fa8c9c1d949b0003cfa7902cfc, type: 3}
   slotsHolderPrefab: {fileID: 5146530564601898319, guid: d4c62b4436508214194f6832ce41f2b1, type: 3}
   slotPrefab: {fileID: 1306509647373501272, guid: e2b6d4b1ba889704c8982c9710bcb13f, type: 3}

@@ -9,8 +9,8 @@ public class AudioManager : MonoBehaviour {
     [Header("Clamping")]
     [SerializeField] private int maxQueriesPerType;
     [SerializeField] private AudioClip avoidClip;
-    private Dictionary<AudioClip, int> queriesPlaying = new Dictionary<AudioClip, int>();
-    private Stack<PlayingQueryTime> queriesStack = new Stack<PlayingQueryTime>();
+    private readonly Dictionary<AudioClip, int> queriesPlaying = new Dictionary<AudioClip, int>();
+    private readonly Stack<PlayingQueryTime> queriesStack = new Stack<PlayingQueryTime>();
     private float musicVolume;
     private float soundVolume;
     private void Awake() {

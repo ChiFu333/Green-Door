@@ -7,8 +7,6 @@ public class WorldOrchestrator : EventOrchestrator {
     private bool isSchoolAlreadyVisited = false;
     private WorldOrchestratorData castedData;
 
-    private bool firstTimeInMagic = true;
-    public bool leftCatTail = false;
     #region StartHandling
     public override void Setup(OrchestratorDataSO data) {
         base.Setup(data);
@@ -31,9 +29,6 @@ public class WorldOrchestrator : EventOrchestrator {
                 break;
             case "CheckTime":
                 HandleTimeCheck();
-                break;
-            case "Forest":
-                HandleForest();
                 break;
         }
     }
@@ -71,14 +66,6 @@ public class WorldOrchestrator : EventOrchestrator {
 
     private void HandleTimeCheck() {
         
-    }
-    private void HandleForest()
-    {
-        if (firstTimeInMagic)
-        {
-            DialogueSystem.inst.StartDialogue(castedData.FirstMagicDialogue);
-            firstTimeInMagic = false;
-        }
     }
     #endregion
 }
