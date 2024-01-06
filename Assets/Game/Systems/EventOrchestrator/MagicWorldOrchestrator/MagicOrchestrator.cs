@@ -15,6 +15,9 @@ public class MagicOrchestrator : EventOrchestrator {
     };
     private bool firstTimeWithCat = true;
     private bool firstTimeInHouseWithCat = true;
+    private bool ladderInRoof = true;
+    private bool ladderIsBroken = false;
+    private bool ladderIsWorking = false;
 
     public MagicOrchestratorData castedData;
     public override void Setup(OrchestratorDataSO data) {
@@ -79,7 +82,21 @@ public class MagicOrchestrator : EventOrchestrator {
     }
     private void HandleHutBack()
     {
-
+        if (ladderInRoof)
+        {
+            Destroy(GameObject.Find("LadderWorking").gameObject);
+            Destroy(GameObject.Find("LadderBroken").gameObject);
+        }
+        else if (ladderIsBroken)
+        {
+            Destroy(GameObject.Find("Ladder").gameObject);
+            Destroy(GameObject.Find("LadderWorking").gameObject);
+        }
+        else
+        {
+            Destroy(GameObject.Find("Ladder").gameObject);
+            Destroy(GameObject.Find("LadderBroken").gameObject);
+        }
     }
     private void HandleWiseTree()
     {
