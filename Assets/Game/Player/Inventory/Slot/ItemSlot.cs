@@ -7,11 +7,11 @@ public class ItemSlot : MonoBehaviour {
     [SerializeField] private Image itemImage;
     private Item item;
     #region Interaction
-    public void SetItem(Item _item) {
+    public void SetItem(Item _item)
+    {
         item = _item;
-        UpdateDisplay();
+        UpdateDisplay();   
     }
-
     public void RemoveItem() {
         item = null;
         UpdateDisplay();

@@ -84,18 +84,18 @@ public class MagicOrchestrator : EventOrchestrator {
     {
         if (ladderInRoof)
         {
-            Destroy(GameObject.Find("LadderWorking").gameObject);
-            Destroy(GameObject.Find("LadderBroken").gameObject);
+            GameObject.Find("LadderBroken").gameObject.SetActive(false);
+            GameObject.Find("LadderWorking").gameObject.SetActive(false);
         }
         else if (ladderIsBroken)
         {
-            Destroy(GameObject.Find("Ladder").gameObject);
-            Destroy(GameObject.Find("LadderWorking").gameObject);
+            GameObject.Find("Ladder").gameObject.SetActive(false);
+            GameObject.Find("LadderWorking").gameObject.SetActive(false);
         }
         else
         {
-            Destroy(GameObject.Find("Ladder").gameObject);
-            Destroy(GameObject.Find("LadderBroken").gameObject);
+            GameObject.Find("Ladder").gameObject.SetActive(false);
+            GameObject.Find("LadderBroken").gameObject.SetActive(false);
         }
     }
     private void HandleWiseTree()
