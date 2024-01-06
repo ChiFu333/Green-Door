@@ -40,31 +40,7 @@ MonoBehaviour:
     <text>k__BackingField: ...
     <callback>k__BackingField:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 11400000, guid: f5ed534e011fb184f8eb2fcde082d936, type: 2}
-          m_TargetAssemblyTypeName: MagicOrchestratorData, Assembly-CSharp
-          m_MethodName: ForceExitFromHut
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 8300000, guid: 1c728901d7ef26f47992665339ffb177, type: 3}
-          m_TargetAssemblyTypeName: MagicOrchestratorData, Assembly-CSharp
-          m_MethodName: 
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
   - <character>k__BackingField: {fileID: 11400000, guid: 755a9391eb3caea46b4149f8b5f5fb05, type: 2}
     <precallback>k__BackingField:
       m_PersistentCalls:
