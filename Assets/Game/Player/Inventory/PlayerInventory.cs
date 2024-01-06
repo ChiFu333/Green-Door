@@ -8,14 +8,16 @@ public class PlayerInventory : MonoBehaviour {
     private Transform slotsHolder;
     private ItemSlot slotPrefab;
     private List<ItemCombinationSO> itemCombinations;
+    private AudioQuery combinationQuery;
 
     private readonly List<ItemSlot> slots = new List<ItemSlot>();
 
     #region Managing
-    public void Setup(Transform _slotsHolder, ItemSlot _slotPrefab, List<ItemCombinationSO> _itemCombinations) {
+    public void Setup(Transform _slotsHolder, ItemSlot _slotPrefab, List<ItemCombinationSO> _itemCombinations, AudioQuery _combinationQuery) {
         slotsHolder = _slotsHolder;
         slotPrefab = _slotPrefab;
         itemCombinations = _itemCombinations;
+        combinationQuery = _combinationQuery;
     }
 
     public void InitializeSlots() {
@@ -75,6 +77,7 @@ public class PlayerInventory : MonoBehaviour {
     }
 
     private void ApplyCombination(ItemCombinationSO combination) {
+        AudioManager.inst.Play(combinationQuery);
         RemoveItem(combination.firstObject);
         RemoveItem(combination.secondObject);
         PickupItem(new Item(combination.resultingObject));

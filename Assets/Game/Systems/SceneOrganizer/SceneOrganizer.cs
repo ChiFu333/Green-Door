@@ -13,6 +13,7 @@ public class SceneOrganizer : MonoBehaviour {
     [SerializeField] private GameObject slotsHolderPrefab;
     [SerializeField] private ItemSlot slotPrefab;
     [SerializeField] private List<ItemCombinationSO> itemCombinations = new List<ItemCombinationSO>();
+    [SerializeField] private AudioQuery combinationQuery; 
     [Header("Dialogue")]
     [SerializeField] private float symbolDelay = 0.02f;
     [SerializeField] private Canvas dialogueCanvasPrefab;
@@ -38,7 +39,7 @@ public class SceneOrganizer : MonoBehaviour {
         GameObject slotsHolder = Instantiate(slotsHolderPrefab, inventoryCanvas.transform);
         //Create manager
         PlayerInventory inventory = InstantiateManager("Inventory system",typeof(PlayerInventory)).GetComponent<PlayerInventory>();
-        inventory.Setup(slotsHolder.transform, slotPrefab, itemCombinations);
+        inventory.Setup(slotsHolder.transform, slotPrefab, itemCombinations, combinationQuery);
         inventory.InitializeSlots();
         //Load items back
         inventory.LoadState();
