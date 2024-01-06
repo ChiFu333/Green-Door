@@ -9,6 +9,7 @@ public class ClickableItem : ClickableThing {
         Player.inst.controller.MoveTo(transform.position, () => {
             PlayerInventory.inst.PickupItem(new Item(itemData));
             AudioManager.inst.Play(new AudioQuery(itemTaked));
+            FindObjectOfType<MagicOrchestrator>().items[key] = true;
             Destroy(gameObject);
         });
     }
