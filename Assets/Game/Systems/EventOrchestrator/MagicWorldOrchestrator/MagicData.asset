@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <orchestratorType>k__BackingField: MagicOrchestrator
   <FirstMagicDialogue>k__BackingField: {fileID: 11400000, guid: 751f06f972b4df547bc429a63ff69419, type: 2}
+  <FirstTimeWithCat>k__BackingField: {fileID: 11400000, guid: 02b6605aa421a4d4aa2c90ff3d5042df, type: 2}
+  <InKitchen>k__BackingField: {fileID: 11400000, guid: 5720c71f6c379a3439e9578eb38c45f2, type: 2}
+  <GoToFood>k__BackingField: {fileID: 11400000, guid: fdd377e3049b7bb47a03ad7eb98a3ddc, type: 2}
+  <CatIsAngry>k__BackingField: {fileID: 11400000, guid: 4c699049b8668134faa00ce26a6d0bb5, type: 2}
