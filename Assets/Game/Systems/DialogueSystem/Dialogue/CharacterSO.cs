@@ -7,4 +7,5 @@ public class CharacterSO : ScriptableObject {
 
     [field: SerializeField] public string label { get; private set; }
     [field: SerializeField] public Color textColor { get; private set; }
+    [field: SerializeField] public AudioClip voice { get; private set; }
 }

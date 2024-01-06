@@ -19,6 +19,7 @@ public class DialogueSystem : MonoBehaviour {
     private TMP_Text text;
     private GameObject leftImageBox, rightImageBox;
     private Image leftImage, rightImage;
+    private AudioSource AS;
 
     public bool IsFrozen() => isDialogueOngoing || isPhraseOngoing;
 
@@ -30,6 +31,7 @@ public class DialogueSystem : MonoBehaviour {
         leftImageBox = _leftImageBox; rightImageBox = _rightImageBox;
         leftImage = leftImageBox.transform.GetChild(0).GetComponent<Image>();
         rightImage = rightImageBox.transform.GetChild(0).GetComponent<Image>();
+        AS = gameObject.AddComponent<AudioSource>();
 
         if (wasUnpaused) {
             ResumeDialogue();
@@ -132,6 +134,7 @@ public class DialogueSystem : MonoBehaviour {
         while (count < message.Length) {
             count++;
             text.text = message.Substring(0, count);
+            if(count % 4 == 0 && AS != null) AS.PlayOneShot(currentPhrase.character.voice);
             timer.SetTime(symbolDelay);
             while (!timer.Execute()) {
                 yield return null;

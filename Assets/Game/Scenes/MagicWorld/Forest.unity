@@ -433,6 +433,9 @@ MonoBehaviour:
   itemCombinations:
   - {fileID: 11400000, guid: c738db293ae6be445b7f82c809593b73, type: 2}
   - {fileID: 11400000, guid: 816aa8b4569b1b84c90b1b89c3086b57, type: 2}
+  combinationQuery:
+    <clip>k__BackingField: {fileID: 8300000, guid: f184df0de4cf3464bae010877d2815bd, type: 3}
+    <pitchVariance>k__BackingField: 0
   symbolDelay: 0.02
   dialogueCanvasPrefab: {fileID: 3919893337132096275, guid: 33cdc6fa8c9c1d949b0003cfa7902cfc, type: 3}
   textPanelPrefab: {fileID: 461639731624153374, guid: 2a879d9cf184fd746adcfc619501363c, type: 3}
@@ -863,6 +866,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <key>k__BackingField: 
+  <isReachableEverywhere>k__BackingField: 0
   targetPosition: {fileID: 0}
   targetScene: Lake
 --- !u!61 &708378350
@@ -1107,6 +1111,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <key>k__BackingField: Berry
+  <isReachableEverywhere>k__BackingField: 0
   targetPosition: {fileID: 0}
   itemData: {fileID: 11400000, guid: c08f36d0fb538d24e9add8d9665b7753, type: 2}
   itemTaked: {fileID: 8300000, guid: 12d2795abccdef44fac2c2d5f84c142a, type: 3}
@@ -1347,6 +1352,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <key>k__BackingField: 
+  <isReachableEverywhere>k__BackingField: 0
   targetPosition: {fileID: 0}
   targetScene: Hut
 --- !u!61 &1310546922

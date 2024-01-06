@@ -16,3 +16,4 @@ MonoBehaviour:
   <onRightSide>k__BackingField: 1
   <label>k__BackingField: "\u041A\u043E\u0442"
   <textColor>k__BackingField: {r: 0.8745098, g: 0.3254902, b: 0.76862746, a: 1}
+  <voice>k__BackingField: {fileID: 8300000, guid: 9f7db3ed4835aec43a89c616efe047e7, type: 3}
