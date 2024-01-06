@@ -10,4 +10,8 @@ public class WorldOrchestratorData : OrchestratorDataSO {
     public void CheckTimeDialogueEnded() { SceneLoader.inst.LoadScene("School",true); }
     public void LoadCheckTimeScene() { SceneLoader.inst.LoadSceneDuringDialogue("CheckTime", true); }
     public void DestroyWorldOrchestrator() { Destroy(EventOrchestrator.inst.gameObject); }
+    public void PlaySound(AudioClip clip)
+    {
+        AudioManager.inst.Play(new AudioQuery(clip));
+    }
 }

@@ -45,12 +45,15 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - <character>k__BackingField: {fileID: 11400000, guid: 9f693c86201eb614ab044d20ed21bc1a, type: 2}
     <precallback>k__BackingField:
       m_PersistentCalls:
         m_Calls: []
     <text>k__BackingField: ...
     <callback>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+  - <character>k__BackingField: {fileID: 11400000, guid: 9f693c86201eb614ab044d20ed21bc1a, type: 2}
+    <precallback>k__BackingField:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 11400000, guid: afe48f116d6869a47bfc55500f4f6c85, type: 2}
@@ -65,6 +68,10 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    <text>k__BackingField: ...
+    <callback>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
   - <character>k__BackingField: {fileID: 11400000, guid: 9f693c86201eb614ab044d20ed21bc1a, type: 2}
     <precallback>k__BackingField:
       m_PersistentCalls:
