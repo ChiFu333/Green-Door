@@ -17,8 +17,24 @@ MonoBehaviour:
     <precallback>k__BackingField:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 11400000, guid: afe48f116d6869a47bfc55500f4f6c85, type: 2}
-          m_TargetAssemblyTypeName: WorldOrchestratorData, Assembly-CSharp
+        - m_Target: {fileID: 11400000, guid: f5ed534e011fb184f8eb2fcde082d936, type: 2}
+          m_TargetAssemblyTypeName: MagicOrchestratorData, Assembly-CSharp
+          m_MethodName: PlaySound
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: 54c4e4c5eeb5d674b95964ac67146913, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    <text>k__BackingField: ...
+    <callback>k__BackingField:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: f5ed534e011fb184f8eb2fcde082d936, type: 2}
+          m_TargetAssemblyTypeName: MagicOrchestratorData, Assembly-CSharp
           m_MethodName: PlaySound
           m_Mode: 2
           m_Arguments:
@@ -29,6 +45,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    <precallback>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
     <text>k__BackingField: ...
     <callback>k__BackingField:
       m_PersistentCalls:

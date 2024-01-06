@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void HandleInput() {
-        if (!isInputLocked && !DialogueSystem.inst.isDialogueOngoing && Input.GetMouseButtonDown(0) && CanWalkToMouse()) {
+        if (!isInputLocked && !DialogueSystem.inst.IsFrozen() && Input.GetMouseButtonDown(0) && CanWalkToMouse()) {
             HandleSettingTarget(ScreenUtils.WorldMouse(), null);
         }
         isInputLocked = false;
