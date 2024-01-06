@@ -16,9 +16,15 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private AnimationDataSO walkRightAnimation;
     [SerializeField] private AnimationDataSO walkLeftAnimation;
     [Header("Imports")]
+    [SerializeField] private CursorStateSO cursor;
+    [SerializeField] private CursorStateSO overridableCursor;
     [SerializeField] private Transform appearanceTransform;
     [SerializeField] private Rigidbody2D physicalBody;
     [SerializeField] private Transform legsPosition;
+
+    private AudioQuery walkQuery;
+    private float walkQueryTime = 0.5f;
+    private readonly Timer walkQueryTimer = new Timer();
 
     private MovementType currentMovementType;
     private bool isInputLocked = false;
@@ -27,6 +33,10 @@ public class PlayerController : MonoBehaviour {
     //Pathing
     private NavMeshPath path;
     private int pathIndex;
+
+    public void SetSound(AudioQuery _walkQuery) {
+        walkQuery = _walkQuery;
+    }
 
     public void MoveTo(Vector2 _targetPosition, UnityAction callback) {
         HandleSettingTarget(_targetPosition, callback);
@@ -45,6 +55,7 @@ public class PlayerController : MonoBehaviour {
         HandleInput();
         HandleMovement();
         UpdatePerspective();
+        UpdateCursor();
     }
 
     private void HandleInput() {
@@ -77,6 +88,7 @@ public class PlayerController : MonoBehaviour {
         direction.y /= roomPerspectiveYModifier;
         physicalBody.velocity = movementSpeed * direction.normalized * new Vector2(1, roomPerspectiveYModifier);
         animator.SetAnimation(direction.normalized.x > 0 ? walkRightAnimation : walkLeftAnimation, false);
+        PlayWalkingSounds();
         if (Vector2.Distance(targetPosition, transform.position) < minTargetDistance) {
             //If point is last
             if (pathIndex >= path.corners.Length - 1) {
@@ -89,16 +101,42 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    private void PlayWalkingSounds() {
+        if (walkQueryTimer.Execute()) {
+            walkQueryTimer.SetTime(walkQueryTime);
+            AudioManager.inst.Play(walkQuery);
+        }
+    }
+
+    private void UpdateCursor() {
+        if (CanWalkToMouse()) {
+            if (HardwareCursorManager.inst.GetCurrentCursor() == overridableCursor) {
+                HardwareCursorManager.inst.SetCursor(cursor);
+            }
+        } else {
+            if (HardwareCursorManager.inst.GetCurrentCursor() == cursor) {
+                HardwareCursorManager.inst.ResetCursor();
+            }
+        }
+    }
+
+    public void ExternalCursorReset() {
+        if (HardwareCursorManager.inst.GetCurrentCursor() != cursor) HardwareCursorManager.inst.ResetCursor();
+    }
+
     private void UpdatePerspective() {
         float dy = baseYPosition - transform.position.y;
         float scale = Mathf.Clamp(1 + dy * roomPerspectiveScaleModifier, scaleRange.x, scaleRange.y);
         appearanceTransform.localScale = Vector3.one * scale;
     }
 
-    //TODO: Move to interaction class, when it'll be present
     private bool CanWalkToMouse() {
-        Collider2D collider = Physics2D.OverlapCircle(ScreenUtils.WorldMouse(),0.1f);
-        return collider == null || collider.isTrigger;
+        //NavMesh.
+        //Collider2D collider = Physics2D.OverlapCircle(ScreenUtils.WorldMouse(),0.1f);
+        //return collider == null || collider.isTrigger;
+        NavMeshPath testPath = new NavMeshPath();
+        bool isSuccessful = NavMesh.CalculatePath(GetPosition(), (Vector3)ScreenUtils.WorldMouse() - legsPosition.localPosition,NavMesh.AllAreas,testPath);
+        return isSuccessful;
     }
 
     private enum MovementType {

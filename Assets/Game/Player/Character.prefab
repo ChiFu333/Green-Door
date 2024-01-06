@@ -285,6 +285,8 @@ MonoBehaviour:
   idleAnimation: {fileID: 11400000, guid: fa7d4e52b0773054d91ae5a4616d7bf5, type: 2}
   walkRightAnimation: {fileID: 11400000, guid: cce36c4ae49500f44967b95a23e59367, type: 2}
   walkLeftAnimation: {fileID: 11400000, guid: e5fddf920bd155e43975de3b7c859ae1, type: 2}
+  cursor: {fileID: 11400000, guid: c6621303c1fbda74a947001363272f2d, type: 2}
+  overridableCursor: {fileID: 11400000, guid: cbae8bf470a3acc43ae4213f0a04a401, type: 2}
   appearanceTransform: {fileID: 8898388509670144241}
   physicalBody: {fileID: 8898388508984993510}
   legsPosition: {fileID: 1410524334201633166}
