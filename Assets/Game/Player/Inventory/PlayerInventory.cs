@@ -89,7 +89,7 @@ public class PlayerInventory : MonoBehaviour {
         return items;
     }
 
-    private List<ItemDataSO> GetItemDatas() {
+    public List<ItemDataSO> GetItemDatas() {
         List<ItemDataSO> datas = new List<ItemDataSO>();
         for (int i = 0; i < slotsAmount; i++) {
             Item item = slots[i].GetItem();
