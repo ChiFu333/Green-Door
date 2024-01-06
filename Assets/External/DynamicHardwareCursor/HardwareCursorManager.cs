@@ -13,6 +13,8 @@ public class HardwareCursorManager : MonoBehaviour {
         UpdateHardwareCursor();
     }
 
+    public CursorStateSO GetCurrentCursor() => currentCursorState;
+
     public void ResetCursor() {
         if (defaultCursorState == null) return;
         currentCursorState = defaultCursorState;
@@ -43,7 +45,8 @@ public class HardwareCursorManager : MonoBehaviour {
                 currentHoveredChanger = changers[0];
                 currentHoveredChanger.SetCursor();
             } else {
-                ResetCursor();
+                //ResetCursor();
+                Player.inst.controller.ExternalCursorReset();
             }
             return;
         }

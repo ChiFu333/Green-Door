@@ -19,6 +19,8 @@ public class SceneOrganizer : MonoBehaviour {
     [SerializeField] private Canvas dialogueCanvasPrefab;
     [SerializeField] private GameObject textPanelPrefab;
     [SerializeField] private GameObject imageBoxPrefab;
+    [Header("Walking sound")]
+    [SerializeField] private AudioQuery walkQuery;
 
     private void Awake() {
         if (GameManager.inst == null) InstantiateManager("GameManager", typeof(GameManager), false);
@@ -86,5 +88,6 @@ public class SceneOrganizer : MonoBehaviour {
 
     private void Start() {
         EventOrchestrator.inst.HandleScenes();
+        Player.inst.controller.SetSound(walkQuery);
     }
 }
