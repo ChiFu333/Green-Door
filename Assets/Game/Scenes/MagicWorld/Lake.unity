@@ -697,7 +697,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 612854816}
-  - component: {fileID: 612854819}
+  - component: {fileID: 612854821}
   - component: {fileID: 612854818}
   - component: {fileID: 612854820}
   m_Layer: 0
@@ -737,28 +737,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursor: {fileID: 11400000, guid: 9305afa55731e0949a5875b1eb60a007, type: 2}
   isTemporal: 1
---- !u!114 &612854819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 612854815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3321461ff37f87b4ba9223a3046c2b48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <callback>k__BackingField:
-    m_PersistentCalls:
-      m_Calls: []
-  <postCallback>k__BackingField:
-    m_PersistentCalls:
-      m_Calls: []
-  <key>k__BackingField: Cattail
-  targetPosition: {fileID: 0}
-  itemData: {fileID: 11400000, guid: e5a028db0ca683746a6a893391f17e79, type: 2}
-  itemTaked: {fileID: 8300000, guid: 12d2795abccdef44fac2c2d5f84c142a, type: 3}
 --- !u!60 &612854820
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -792,6 +770,40 @@ PolygonCollider2D:
       - {x: -0.3549189, y: 0.85880864}
       - {x: -0.3185047, y: 0.3804891}
       - {x: 0.29021978, y: 0.42230314}
+--- !u!114 &612854821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612854815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da17c3da8ac64f6428732230f5c3f6fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <callback>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <postCallback>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <key>k__BackingField: Cattail1
+  <isReachableEverywhere>k__BackingField: 1
+  targetPosition: {fileID: 0}
+  requirements:
+  - {fileID: 11400000, guid: c08f36d0fb538d24e9add8d9665b7753, type: 2}
+  phrase:
+    <character>k__BackingField: {fileID: 11400000, guid: 9f693c86201eb614ab044d20ed21bc1a, type: 2}
+    <precallback>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+    <text>k__BackingField: "\u042F\u0433\u043E\u0434\u0443 \u043D\u0430\u0434\u043E"
+    <callback>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+  itemData: {fileID: 11400000, guid: e5a028db0ca683746a6a893391f17e79, type: 2}
+  itemTaked: {fileID: 8300000, guid: 12d2795abccdef44fac2c2d5f84c142a, type: 3}
 --- !u!1 &697662742
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,6 +1004,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <key>k__BackingField: Rock
+  <isReachableEverywhere>k__BackingField: 0
   targetPosition: {fileID: 0}
   itemData: {fileID: 11400000, guid: 35c2ea590196a994f93a4c128e18be8e, type: 2}
   itemTaked: {fileID: 8300000, guid: 12d2795abccdef44fac2c2d5f84c142a, type: 3}
@@ -1194,6 +1207,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <key>k__BackingField: Cattail2
+  <isReachableEverywhere>k__BackingField: 0
   targetPosition: {fileID: 0}
   itemData: {fileID: 11400000, guid: e5a028db0ca683746a6a893391f17e79, type: 2}
   itemTaked: {fileID: 8300000, guid: 12d2795abccdef44fac2c2d5f84c142a, type: 3}
@@ -1347,7 +1361,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1310546918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7, y: -4.61, z: 0}
+  m_LocalPosition: {x: -0.7, y: -4.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1387,6 +1401,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <key>k__BackingField: 
+  <isReachableEverywhere>k__BackingField: 0
   targetPosition: {fileID: 0}
   targetScene: Forest
 --- !u!61 &1310546922

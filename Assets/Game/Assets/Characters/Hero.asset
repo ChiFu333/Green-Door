@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dec4ac59d866354a92f463527b9b4da, type: 3}
   m_Name: Hero
   m_EditorClassIdentifier: 
-  <face>k__BackingField: {fileID: 21300000, guid: 6fc8eedc838416e4184aeea6d0c38755, type: 3}
+  <face>k__BackingField: {fileID: 21300000, guid: 8b7d33e4d2a835c48b8d25137290172c, type: 3}
   <onRightSide>k__BackingField: 0
   <label>k__BackingField: "\u041F\u0430\u0446\u0430\u043D"
   <textColor>k__BackingField: {r: 0.84705883, g: 0.5411765, b: 0.24313726, a: 1}
