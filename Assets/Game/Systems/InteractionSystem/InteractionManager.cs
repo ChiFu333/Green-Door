@@ -8,6 +8,15 @@ public class InteractionManager : MonoBehaviour {
         HandleInteractions();
     }
 
+    public bool IsHoveringOverInteractor() {
+        List<GameObject> objects = ScreenUtils.GetObjectsUnderMouse();
+        for (int i = 0; i < objects.Count; i++) {
+            ClickableThing clickable = objects[i].GetComponent<ClickableThing>();
+            if (clickable != null) return true;
+        }
+        return false;
+    }
+
     public void RegisterClickable(string name, ClickableThing clickable) {
         sceneClickables.Add(name, clickable);
     }
@@ -15,7 +24,7 @@ public class InteractionManager : MonoBehaviour {
 
     private void HandleInteractions() {
         if (!Input.GetMouseButtonDown(0)) return;
-        if (DialogueSystem.inst.isDialogueOngoing) return;
+        if (DialogueSystem.inst.IsFrozen()) return;
         List<GameObject> objects = ScreenUtils.GetObjectsUnderMouse();
         for (int i = 0; i < objects.Count; i++) {
             ClickableThing clickable = objects[i].GetComponent<ClickableThing>();

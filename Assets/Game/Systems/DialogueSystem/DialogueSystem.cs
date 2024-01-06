@@ -12,12 +12,15 @@ public class DialogueSystem : MonoBehaviour {
     private Phrase currentPhrase;
     private bool isTextAnimationPlaying, isPaused, wasUnpaused;
     public bool isDialogueOngoing { get; private set; }
+    public bool isPhraseOngoing { get; private set; }
     //View
     private Canvas dialogueCanvas;
     private GameObject textPanel;
     private TMP_Text text;
     private GameObject leftImageBox, rightImageBox;
     private Image leftImage, rightImage;
+
+    public bool IsFrozen() => isDialogueOngoing || isPhraseOngoing;
 
     public void Setup(float _symbolDelay, Canvas _dialogueCanvas, GameObject _textPanel, GameObject _leftImageBox, GameObject _rightImageBox) {
         symbolDelay = _symbolDelay;
@@ -39,6 +42,14 @@ public class DialogueSystem : MonoBehaviour {
         if (!isPaused) wasUnpaused = true;
     }
 
+    public void SayPhrase(Phrase phrase) {
+        if (isDialogueOngoing) return;
+        SetUIVisibility(true);
+        currentPhrase = phrase;
+        isPhraseOngoing = true;
+        PlayPhrase();
+    }
+
     public void StartDialogue(DialogueSO dialogue) {
         currentDialogue = dialogue;
         isDialogueOngoing = true;
@@ -56,6 +67,10 @@ public class DialogueSystem : MonoBehaviour {
     private void PlayNextPhrase() {
         currentPhrase = currentDialogue.phrases[phraseIndex];
         phraseIndex++;
+        PlayPhrase();
+    }
+
+    private void PlayPhrase() {
         currentPhrase.precallback.Invoke();
         //Update visuals
         if (currentPhrase.character.onRightSide) {
@@ -76,6 +91,16 @@ public class DialogueSystem : MonoBehaviour {
     }
 
     private void Update() {
+        //Single phrase
+        if (!isDialogueOngoing && Input.GetMouseButtonDown(0) && currentDialogue == null) {
+            if (!isTextAnimationPlaying) {
+                //End phrase
+                SetUIVisibility(false);
+                isTextAnimationPlaying = false;
+                isPhraseOngoing = false;
+            }
+        }
+        //Whole dialogue
         if (isDialogueOngoing && Input.GetMouseButtonDown(0) && currentDialogue != null) {
             if (phraseIndex == currentDialogue.phrases.Count) {
                 currentPhrase.callback.Invoke();
@@ -83,6 +108,7 @@ public class DialogueSystem : MonoBehaviour {
                 //End dialogue
                 SetUIVisibility(false);
                 isDialogueOngoing = false;
+                currentDialogue = null;
             } else {
                 if (isTextAnimationPlaying) {
                     if (isPaused) return;
@@ -107,9 +133,12 @@ public class DialogueSystem : MonoBehaviour {
             count++;
             text.text = message.Substring(0, count);
             timer.SetTime(symbolDelay);
-            while (!timer.Execute()) yield return null;
+            while (!timer.Execute()) {
+                yield return null;
+            }
         }
         isTextAnimationPlaying = false;
+        isPhraseOngoing = false;
     }
 
     private void Awake() {
