@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Game/Scenes/RealWorld/CheckTime.unity
     guid: 525b8e38019163c4d970dc2b6caedb57
   - enabled: 1
-    path: Assets/Game/Scenes/Forest.unity
+    path: Assets/Game/Scenes/MagicWorld/Forest.unity
     guid: ea5299a770179a7408e67b43e5dbed4a
   - enabled: 1
     path: Assets/Game/Scenes/MagicWorld/Lake.unity

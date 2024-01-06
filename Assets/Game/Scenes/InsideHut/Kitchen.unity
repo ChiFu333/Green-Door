@@ -208,6 +208,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <key>k__BackingField: Knife
+  <isReachableEverywhere>k__BackingField: 0
   targetPosition: {fileID: 0}
   itemData: {fileID: 11400000, guid: 0e11d73c36d0eb6418a7585978560286, type: 2}
   itemTaked: {fileID: 0}
@@ -219,7 +220,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47931175}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.72, y: -2.9, z: 0}
+  m_LocalPosition: {x: -0.55, y: -2.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -568,6 +569,9 @@ MonoBehaviour:
   itemCombinations:
   - {fileID: 11400000, guid: c738db293ae6be445b7f82c809593b73, type: 2}
   - {fileID: 11400000, guid: 816aa8b4569b1b84c90b1b89c3086b57, type: 2}
+  combinationQuery:
+    <clip>k__BackingField: {fileID: 0}
+    <pitchVariance>k__BackingField: 0
   symbolDelay: 0.02
   dialogueCanvasPrefab: {fileID: 3919893337132096275, guid: 33cdc6fa8c9c1d949b0003cfa7902cfc, type: 3}
   textPanelPrefab: {fileID: 461639731624153374, guid: 2a879d9cf184fd746adcfc619501363c, type: 3}
@@ -1016,6 +1020,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <key>k__BackingField: 
+  <isReachableEverywhere>k__BackingField: 0
   targetPosition: {fileID: 0}
   targetScene: Attic
 --- !u!61 &708378350
@@ -1344,6 +1349,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <key>k__BackingField: 
+  <isReachableEverywhere>k__BackingField: 0
   targetPosition: {fileID: 0}
   targetScene: Bedroom
 --- !u!61 &1310546922

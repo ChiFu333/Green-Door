@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ObservableItem : ClickableThing {
     [SerializeField] private List<ItemDataSO> requirements = new List<ItemDataSO>();
@@ -8,12 +9,18 @@ public class ObservableItem : ClickableThing {
     [Header("Item")]
     [SerializeField] private ItemDataSO itemData;
     [SerializeField] private AudioClip itemTaked;
+    [SerializeField] private UnityEvent AfterUseCallback = new UnityEvent();
     public override void HandleClick() {
         base.HandleClick();
         if (IsSatisfied()) {
             Player.inst.controller.MoveTo(transform.position, () => {
-                PlayerInventory.inst.PickupItem(new Item(itemData));
                 AudioManager.inst.Play(new AudioQuery(itemTaked));
+                PlayerInventory.inst.RemoveItem(requirements[0]); // aaaaa
+                if (itemData != null)
+                {
+                    PlayerInventory.inst.PickupItem(new Item(itemData));
+                }
+                AfterUseCallback.Invoke();
                 Destroy(gameObject);
             });
         }
