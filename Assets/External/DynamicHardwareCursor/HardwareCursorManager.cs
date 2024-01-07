@@ -5,7 +5,7 @@ using UnityEditor;
 
 public class HardwareCursorManager : MonoBehaviour {
     [SerializeField] private CursorStateSO defaultCursorState;
-    [SerializeField] private bool isWorld = true;
+    public bool isWorld = true;
     private CursorStateSO currentCursorState;
     HoverCursorChanger currentHoveredChanger;
     public void SetCursor(CursorStateSO newCursorState) {
@@ -74,7 +74,10 @@ public class HardwareCursorManager : MonoBehaviour {
         } else {
             inst = this;
             DontDestroyOnLoad(gameObject);
-            SceneManager.sceneLoaded += (scene, type) => ResetCursor();
+            SceneManager.sceneLoaded += (scene, type) => {
+                if (Player.inst == null) isWorld = false;
+                ResetCursor();
+            };
             ResetCursor();
         }
     }

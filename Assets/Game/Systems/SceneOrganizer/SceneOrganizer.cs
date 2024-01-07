@@ -31,6 +31,7 @@ public class SceneOrganizer : MonoBehaviour {
         SetupInteractionSystem();
         SetupDialogueSystem();
         SetupTimerSystem();
+        if (HardwareCursorManager.inst != null) HardwareCursorManager.inst.isWorld = true;
     }
 
     private void SetupOrchestrator(OrchestratorDataSO data) {

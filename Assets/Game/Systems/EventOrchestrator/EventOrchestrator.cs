@@ -15,7 +15,7 @@ public class EventOrchestrator : MonoBehaviour {
     public virtual void HandleScenes() { }
 
     protected Vector2 GetSpawnPosition() {
-        if (string.IsNullOrEmpty(previousRoom)) {
+        if (string.IsNullOrEmpty(previousRoom) || !spawnPositions.ContainsKey(previousRoom)) {
             return Player.inst.controller.GetPosition();
         }
         return spawnPositions[previousRoom];

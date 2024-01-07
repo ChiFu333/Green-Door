@@ -169,6 +169,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetScene: MyHouse
   settingsPanel: {fileID: 666799922}
+  soundSlider: {fileID: 1488009264}
+  musicSlider: {fileID: 207876356}
 --- !u!1 &18758411
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,19 +505,7 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 12245948}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: MusicVolumeSet
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &384512914
 GameObject:
   m_ObjectHideFlags: 0
@@ -1939,19 +1929,7 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 12245948}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: SoundVolumeSet
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1510477144
 GameObject:
   m_ObjectHideFlags: 0
