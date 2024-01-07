@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private Rigidbody2D physicalBody;
     [SerializeField] private Transform legsPosition;
 
-    private AudioQuery walkQuery;
+    [SerializeField]private AudioQuery walkQuery;
     private float walkQueryTime = 0.5f;
     private readonly Timer walkQueryTimer = new Timer();
 
