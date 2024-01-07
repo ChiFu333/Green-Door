@@ -16,7 +16,8 @@ public class MagicOrchestrator : EventOrchestrator {
         { "WaterBucket",false },
         { "FishingRod", false },
         { "Fish", false },
-        { "Mushroom", false}
+        { "Mushroom", false},
+        { "Key", false }
         
     };
     public Dictionary<string, bool> events = new Dictionary<string, bool>()
@@ -28,6 +29,7 @@ public class MagicOrchestrator : EventOrchestrator {
         { "LadderWorking", false},
         { "BirdRemoved", false},
         { "TreeWatered", false},
+        { "TeaIsPoisoned", false},
         { "CatIsSleeping", false}
     };
     public MagicOrchestratorData castedData;
@@ -82,6 +84,7 @@ public class MagicOrchestrator : EventOrchestrator {
     }
     private void HandleHut()
     {
+
         if (!events["firstTimeWithCat"])
         {
             DialogueSystem.inst.StartDialogue(castedData.FirstTimeWithCat);
@@ -93,6 +96,18 @@ public class MagicOrchestrator : EventOrchestrator {
         else
         {
             Destroy(GameObject.Find("Kitchen"));
+        }
+        if (events["CatIsSleeping"])
+        {
+            Destroy(GameObject.Find("CatSitting"));
+        }
+        else
+        {
+            Destroy(GameObject.Find("CatSitting1"));
+        }
+        if (items["Key"])
+        {
+            Destroy(GameObject.Find("KeyOnCat"));
         }
     }
     private void HandleHutBack()
@@ -145,6 +160,11 @@ public class MagicOrchestrator : EventOrchestrator {
     private void HandleAttic()
     {
         if (items["FishingRod"]) Destroy(InteractionManager.inst.GetClickable("FishingRod").gameObject);
+        if (events["TeaIsPoisoned"] && !events["CatIsSleeping"])
+        {
+            DialogueSystem.inst.StartDialogue(castedData.DrinkAndSleep);
+            events["CatIsSleeping"] = true;
+        }
     }
     private void HandleKitchen()
     {
@@ -152,9 +172,15 @@ public class MagicOrchestrator : EventOrchestrator {
         if (!events["firstTimeInHouseWithCat"])
         {
             Destroy(GameObject.Find("Transitions"));
-            GameObject.Find("Trigger1").SetActive(true);
+            
             DialogueSystem.inst.StartDialogue(castedData.InKitchen);
             events["firstTimeInHouseWithCat"] = true;
+        }
+        else
+        {
+            GameObject.Find("Trigger1").SetActive(false);
+            GameObject.Find("CatCooking").SetActive(false);
+            GameObject.Find("Observe1").SetActive(false);
         }
     }
     private void HandleBedroom()

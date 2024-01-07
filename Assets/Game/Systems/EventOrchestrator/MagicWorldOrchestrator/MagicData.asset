@@ -19,3 +19,5 @@ MonoBehaviour:
   <GoToFood>k__BackingField: {fileID: 11400000, guid: fdd377e3049b7bb47a03ad7eb98a3ddc, type: 2}
   <CatIsAngry>k__BackingField: {fileID: 11400000, guid: 4c699049b8668134faa00ce26a6d0bb5, type: 2}
   <ThinksAboutMushroom>k__BackingField: {fileID: 11400000, guid: d5ce9578bf018824781dfcb11f462ada, type: 2}
+  <DrinkAndSleep>k__BackingField: {fileID: 11400000, guid: cec8ce9e1e1b0e3458137ef1eb639f9c, type: 2}
+  <Attention>k__BackingField: {fileID: 11400000, guid: 21f9debee13dee84892a23a828e39d22, type: 2}

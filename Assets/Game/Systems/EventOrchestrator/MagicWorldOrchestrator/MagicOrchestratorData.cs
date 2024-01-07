@@ -10,6 +10,8 @@ public class MagicOrchestratorData : OrchestratorDataSO {
     [field: SerializeField] public DialogueSO GoToFood { get; private set; }
     [field: SerializeField] public DialogueSO CatIsAngry { get; private set; }
     [field: SerializeField] public DialogueSO ThinksAboutMushroom { get; private set; }
+    [field: SerializeField] public DialogueSO DrinkAndSleep { get; private set; }
+    [field: SerializeField] public DialogueSO Attention { get; private set; }
 
     public void ForceExitFromHut()
     {
@@ -31,4 +33,9 @@ public class MagicOrchestratorData : OrchestratorDataSO {
     {
         FindFirstObjectByType<MagicOrchestrator>().items[name] = true;
     }
+    public void DeleteSittingCat()
+    {
+        GameObject.Find("CatSitting").gameObject.SetActive(false);
+    }
+    public void AttetionDialog() { DialogueSystem.inst.StartDialogue(Attention); }
 }
