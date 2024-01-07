@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dec4ac59d866354a92f463527b9b4da, type: 3}
   m_Name: Cat
   m_EditorClassIdentifier: 
-  <face>k__BackingField: {fileID: 21300000, guid: c9060cd0753bd164bb86658e6648497c, type: 3}
+  <face>k__BackingField: {fileID: 21300000, guid: 8b0fd87c8f9aaf745a87029258ae6087, type: 3}
   <onRightSide>k__BackingField: 1
   <label>k__BackingField: "\u041A\u043E\u0442"
   <textColor>k__BackingField: {r: 0.8745098, g: 0.3254902, b: 0.76862746, a: 1}

@@ -96,8 +96,23 @@ MonoBehaviour:
     <precallback>k__BackingField:
       m_PersistentCalls:
         m_Calls: []
-    <text>k__BackingField: "\u041D\u0430\u0434\u043E... \u0441\u0442\u043E\u0440\u043E\u0436\u0438\u0442\u044C...
-      \u0434\u043E\u043C..."
+    <text>k__BackingField: "\u041D\u0430\u0434\u043E... "
+    <callback>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+  - <character>k__BackingField: {fileID: 11400000, guid: 755a9391eb3caea46b4149f8b5f5fb05, type: 2}
+    <precallback>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+    <text>k__BackingField: "C\u0442\u043E\u0440\u043E\u0436\u0438\u0442\u044C..."
+    <callback>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+  - <character>k__BackingField: {fileID: 11400000, guid: 755a9391eb3caea46b4149f8b5f5fb05, type: 2}
+    <precallback>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+    <text>k__BackingField: "\u0414\u043E\u043C..."
     <callback>k__BackingField:
       m_PersistentCalls:
         m_Calls:
