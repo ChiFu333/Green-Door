@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 
 public class TagManager : MonoBehaviour
@@ -12,10 +9,6 @@ public class TagManager : MonoBehaviour
     /// 3 4 5
     /// 6 7 8
     /// </summary>
-    void Start()
-    {
-        
-    }  
     public void MoveBlock(GameObject block)
     {
         Block bl = block.GetComponent<Block>();
@@ -36,44 +29,18 @@ public class TagManager : MonoBehaviour
             bl.pos = b;
         }
     }
-    private bool CheckPos(int p)
-    {
-        bool A = false;
-        switch (p)
-        {
-            case 0:
-                A = CheckNum(1,3,1,3);
-                break;
-            case 1:
-                A = CheckNum(0, 2, 4, 0);
-                break;
-            case 2:
-                A = CheckNum(1, 5, 1, 5);
-                break;
-            case 3:
-                A = CheckNum(0, 6, 4, 0);
-                break;
-            case 4:
-                A = CheckNum(1, 7, 3, 5);
-                break;
-            case 5:
-                A = CheckNum(2, 2, 4, 8);
-                break;
-            case 6:
-                A = CheckNum(3, 3, 7, 7);
-                break;
-            case 7:
-                A = CheckNum(4, 4, 6, 8);
-                break;
-            case 8:
-                A = CheckNum(7, 7, 5, 5);
-                break;
 
-        }
-        return A;
+    private bool CheckPos(int p) {
+        if (IsZeroAtIndex(-3, p)) return true;
+        if (IsZeroAtIndex(+3, p)) return true;
+        if (IsZeroAtIndex(+1, p)) return true;
+        if (IsZeroAtIndex(-1, p)) return true;
+        return false;
     }
-    private bool CheckNum(int a,int b,int c, int d)
-    {
-        return state[a] == 0 || state[b] == 0 || state[c] == 0 || state[d] == 0;
+    private bool IsZeroAtIndex(int offset, int p) {
+        int index = p + offset;
+        if (index < 0 || index > 8) return false;
+        if (Mathf.Abs(offset) == 1 && p / 3 != index / 3) return false;
+        return state[index] == 0;
     }
 }
