@@ -5,6 +5,7 @@ using UnityEditor;
 
 public class HardwareCursorManager : MonoBehaviour {
     [SerializeField] private CursorStateSO defaultCursorState;
+    [SerializeField] private bool isWorld = true;
     private CursorStateSO currentCursorState;
     HoverCursorChanger currentHoveredChanger;
     public void SetCursor(CursorStateSO newCursorState) {
@@ -31,6 +32,7 @@ public class HardwareCursorManager : MonoBehaviour {
     }
 
     private void HandleWorldChangers() {
+        if (!isWorld) return;
         //Find new changers
         List<HoverCursorChanger> changers = new List<HoverCursorChanger>();
         List<GameObject> objects = ScreenUtils.GetObjectsUnderMouse();

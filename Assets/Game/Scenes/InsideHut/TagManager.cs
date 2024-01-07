@@ -1,27 +1,21 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TagManager : MonoBehaviour
-{
+public class TagManager : MonoBehaviour {
     public int[] state = new int[9] { 9, 1, 3, 4, 5, 2, 1, 3, 0 }; //L - 1, след поворот против часовой 9 - клетка без провода 0 - нет клетки 5 - горизонт.
     private const int SIZE = 170; //массив идёт сверзу вниз слева направо
     [SerializeField] private UnityEvent afterComplete = new UnityEvent();
-    /// </summary>
-    public void MoveBlock(GameObject block)
-    {
+    public void MoveBlock(GameObject block) {
         Block bl = block.GetComponent<Block>();
-        if (CheckPos(bl.pos))
-        {
+        if (CheckPos(bl.pos)) {
             int b = -1;
-            for(int i = 0; i < state.Length; i++)
-            {
-                if (state[i] == 0)
-                {
+            for (int i = 0; i < state.Length; i++) {
+                if (state[i] == 0) {
                     b = i;
                     break;
                 }
             }
-            block.GetComponent<RectTransform>().anchoredPosition = new Vector2(-SIZE, SIZE) + new Vector2(SIZE * (b%3), -SIZE * Mathf.Floor(b/3));
+            block.GetComponent<RectTransform>().anchoredPosition = new Vector2(-SIZE, SIZE) + new Vector2(SIZE * (b % 3), -SIZE * Mathf.Floor(b / 3));
             state[b] = bl.number;
             state[bl.pos] = 0;
             bl.pos = b;
@@ -42,11 +36,9 @@ public class TagManager : MonoBehaviour
         if (Mathf.Abs(offset) == 1 && p / 3 != index / 3) return false;
         return state[index] == 0;
     }
-    public bool IsComplete()
-    {
+    public bool IsComplete() {
         int[] win = new int[9] { 9, 1, 3, 4, 5, 2, 1, 3, 0 };
-        for(int i = 0; i < 9; i++)
-        {
+        for (int i = 0; i < 9; i++) {
             if (state[i] != win[i]) return false;
         }
         return true;

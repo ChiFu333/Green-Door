@@ -1268,6 +1268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultCursorState: {fileID: 11400000, guid: cbae8bf470a3acc43ae4213f0a04a401, type: 2}
+  isWorld: 0
 --- !u!4 &1110519157
 Transform:
   m_ObjectHideFlags: 0

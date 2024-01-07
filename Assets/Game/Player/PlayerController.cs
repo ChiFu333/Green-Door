@@ -131,8 +131,6 @@ public class PlayerController : MonoBehaviour {
     }
 
     private bool CanWalkToMouse() {
-        //Collider2D collider = Physics2D.OverlapCircle(ScreenUtils.WorldMouse(),0.1f);
-        //return collider == null || collider.isTrigger;
         NavMeshPath testPath = new NavMeshPath();
         bool isSuccessful = NavMesh.CalculatePath(GetPosition(), (Vector3)ScreenUtils.WorldMouse() - legsPosition.localPosition,NavMesh.AllAreas,testPath);
         return isSuccessful;
