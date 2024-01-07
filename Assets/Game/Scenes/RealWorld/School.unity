@@ -198,10 +198,16 @@ MonoBehaviour:
   slotsHolderPrefab: {fileID: 5146530564601898319, guid: d4c62b4436508214194f6832ce41f2b1, type: 3}
   slotPrefab: {fileID: 1306509647373501272, guid: e2b6d4b1ba889704c8982c9710bcb13f, type: 3}
   itemCombinations: []
+  combinationQuery:
+    <clip>k__BackingField: {fileID: 0}
+    <pitchVariance>k__BackingField: 0
   symbolDelay: 0.02
   dialogueCanvasPrefab: {fileID: 3919893337132096275, guid: 33cdc6fa8c9c1d949b0003cfa7902cfc, type: 3}
   textPanelPrefab: {fileID: 461639731624153374, guid: 2a879d9cf184fd746adcfc619501363c, type: 3}
   imageBoxPrefab: {fileID: 6280215002228502238, guid: 938a262a57d166f4fae8da22f5f264e7, type: 3}
+  walkQuery:
+    <clip>k__BackingField: {fileID: 8300000, guid: 43d292a8bdcc95146b0eeff1e18ca485, type: 3}
+    <pitchVariance>k__BackingField: 0.2
 --- !u!4 &658896562
 Transform:
   m_ObjectHideFlags: 0
@@ -336,6 +342,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <key>k__BackingField: 
+  <isReachableEverywhere>k__BackingField: 0
   targetPosition: {fileID: 0}
   targetScene: Street
 --- !u!61 &812892472
@@ -1368,6 +1375,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <key>k__BackingField: schoolDoor
+  <isReachableEverywhere>k__BackingField: 0
   targetPosition: {fileID: 1659481418}
 --- !u!114 &1870980841
 MonoBehaviour:

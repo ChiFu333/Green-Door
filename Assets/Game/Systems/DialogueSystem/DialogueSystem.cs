@@ -89,7 +89,7 @@ public class DialogueSystem : MonoBehaviour {
     }
 
     private void SetUIVisibility(bool isVisible) {
-        dialogueCanvas.gameObject.SetActive(isVisible);
+        if(dialogueCanvas != null) dialogueCanvas.gameObject.SetActive(isVisible);
     }
 
     private void Update() {

@@ -38,4 +38,8 @@ public class MagicOrchestratorData : OrchestratorDataSO {
         GameObject.Find("CatSitting").gameObject.SetActive(false);
     }
     public void AttetionDialog() { DialogueSystem.inst.StartDialogue(Attention); }
+    public void StartTimer(int time)
+    {
+        FindObjectOfType<TimeToLose>().StartTimer(time);
+    }
 }

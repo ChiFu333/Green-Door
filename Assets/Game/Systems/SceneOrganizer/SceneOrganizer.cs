@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SceneOrganizer : MonoBehaviour {
@@ -21,6 +22,7 @@ public class SceneOrganizer : MonoBehaviour {
     [SerializeField] private GameObject imageBoxPrefab;
     [Header("Walking sound")]
     [SerializeField] private AudioQuery walkQuery;
+    [SerializeField] private GameObject timerHolder;
 
     private void Awake() {
         if (GameManager.inst == null) InstantiateManager("GameManager", typeof(GameManager), false);
@@ -28,6 +30,7 @@ public class SceneOrganizer : MonoBehaviour {
         SetupInventory();
         SetupInteractionSystem();
         SetupDialogueSystem();
+        SetupTimerSystem();
     }
 
     private void SetupOrchestrator(OrchestratorDataSO data) {
@@ -84,6 +87,24 @@ public class SceneOrganizer : MonoBehaviour {
         if (doParent) newObject.transform.parent = managerHolder;
         newObject.AddComponent(componentType);
         return newObject;
+    }
+    private void SetupTimerSystem()
+    {
+        if(timerHolder != null) 
+        { 
+            Canvas C = CreateCanvas("TimerCanvas", inventoryCanvasPrefab.gameObject);
+            GameObject g = Instantiate(timerHolder, C.transform);
+            if(TimeToLose.inst == null || !TimeToLose.inst.timeIsComing)
+            {
+                g.SetActive(false);
+            }
+            else
+            {
+                TMP_Text text = g.GetComponentInChildren<TMP_Text>();
+                text.text = TimeToLose.inst.myTime.ToString();
+            }
+
+        }
     }
 
     private void Start() {

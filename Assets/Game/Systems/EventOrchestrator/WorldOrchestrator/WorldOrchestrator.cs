@@ -38,6 +38,10 @@ public class WorldOrchestrator : EventOrchestrator {
             DialogueSystem.inst.StartDialogue(castedData.initialDialogue);
             firstTimeAtHome = false;
         }
+        if(!isSchoolAlreadyVisited)
+        {
+            GameObject.Find("FunnyEnd").SetActive(false);
+        }
     }
 
     private void HandleSchool() {

@@ -50,4 +50,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Ends/FunnyEnd.unity
     guid: 60cf76626bb7838479794a8b29e9bb3d
+  - enabled: 1
+    path: Assets/Ends/BadEnd.unity
+    guid: d0a6b1b99ffad9a459d91dbe3229ae37
   m_configObjects: {}

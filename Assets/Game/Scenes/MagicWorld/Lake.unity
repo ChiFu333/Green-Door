@@ -398,6 +398,10 @@ MonoBehaviour:
   dialogueCanvasPrefab: {fileID: 3919893337132096275, guid: 33cdc6fa8c9c1d949b0003cfa7902cfc, type: 3}
   textPanelPrefab: {fileID: 461639731624153374, guid: 2a879d9cf184fd746adcfc619501363c, type: 3}
   imageBoxPrefab: {fileID: 6280215002228502238, guid: 938a262a57d166f4fae8da22f5f264e7, type: 3}
+  walkQuery:
+    <clip>k__BackingField: {fileID: 8300000, guid: c8c93f5fbae86ab499cf5a71b04d4ed6, type: 3}
+    <pitchVariance>k__BackingField: 0.2
+  timerHolder: {fileID: 6280215002228502238, guid: dd5616bf2f502ed49808495a21a46753, type: 3}
 --- !u!4 &463983284
 Transform:
   m_ObjectHideFlags: 0
@@ -796,6 +800,9 @@ MonoBehaviour:
   targetPosition: {fileID: 0}
   itemData: {fileID: 11400000, guid: e5a028db0ca683746a6a893391f17e79, type: 2}
   itemTaked: {fileID: 8300000, guid: 12d2795abccdef44fac2c2d5f84c142a, type: 3}
+  AfterUseCallback:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &697662742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,6 +1008,9 @@ MonoBehaviour:
   targetPosition: {fileID: 0}
   itemData: {fileID: 11400000, guid: 35c2ea590196a994f93a4c128e18be8e, type: 2}
   itemTaked: {fileID: 8300000, guid: 12d2795abccdef44fac2c2d5f84c142a, type: 3}
+  AfterUseCallback:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &754639794
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1204,6 +1214,9 @@ MonoBehaviour:
   targetPosition: {fileID: 0}
   itemData: {fileID: 11400000, guid: e5a028db0ca683746a6a893391f17e79, type: 2}
   itemTaked: {fileID: 8300000, guid: 12d2795abccdef44fac2c2d5f84c142a, type: 3}
+  AfterUseCallback:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!224 &1041954787 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2773021528464013763, guid: 75aa2765be64cca40b1bf6a6c3a1a89d, type: 3}
@@ -1453,6 +1466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultCursorState: {fileID: 11400000, guid: cbae8bf470a3acc43ae4213f0a04a401, type: 2}
+  isWorld: 1
 --- !u!4 &1407605415
 Transform:
   m_ObjectHideFlags: 0

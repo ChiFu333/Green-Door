@@ -20,7 +20,10 @@ public class MenuManager : MonoBehaviour {
     public void SoundVolumeSet(float value) {
         AudioManager.inst.SetSoundVolume(value);
     }
-
+    public void DeleteOrchestrator()
+    {   
+        if(FindFirstObjectByType<WorldOrchestrator>() != null) Destroy(FindFirstObjectByType<WorldOrchestrator>().gameObject);
+    }
     public void Exit() {
         Application.Quit(0);
     }
