@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TagManager : MonoBehaviour
 {
     public int[] state = new int[9] { 9, 1, 3, 4, 5, 2, 1, 3, 0 }; //L - 1, след поворот против часовой 9 - клетка без провода 0 - нет клетки 5 - горизонт.
     private const int SIZE = 170; //массив идёт сверзу вниз слева направо
-    /// <summary>
-    /// 0 1 2
-    /// 3 4 5
-    /// 6 7 8
+    [SerializeField] private UnityEvent afterComplete = new UnityEvent();
     /// </summary>
     void Start()
     {
@@ -34,6 +32,7 @@ public class TagManager : MonoBehaviour
             state[b] = bl.number;
             state[bl.pos] = 0;
             bl.pos = b;
+            if (IsComplete()) afterComplete.Invoke();
         }
     }
     private bool CheckPos(int p)
@@ -75,5 +74,14 @@ public class TagManager : MonoBehaviour
     private bool CheckNum(int a,int b,int c, int d)
     {
         return state[a] == 0 || state[b] == 0 || state[c] == 0 || state[d] == 0;
+    }
+    public bool IsComplete()
+    {
+        int[] win = new int[9] { 9, 1, 3, 4, 5, 2, 1, 3, 0 };
+        for(int i = 0; i < 9; i++)
+        {
+            if (state[i] != win[i]) return false;
+        }
+        return true;
     }
 }
