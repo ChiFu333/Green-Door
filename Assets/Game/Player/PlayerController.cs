@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour {
 
     private MovementType currentMovementType;
     private bool isInputLocked = false;
+    private bool isForcedInputLock = false;
     private Vector2 targetPosition;
     private UnityAction arrivalCallback;
     //Pathing
@@ -59,7 +60,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void HandleInput() {
-        if (!isInputLocked && !DialogueSystem.inst.IsFrozen() && Input.GetMouseButtonDown(0) && CanWalkToMouse()) {
+        if (!isInputLocked && !isForcedInputLock && !DialogueSystem.inst.IsFrozen() && Input.GetMouseButtonDown(0) && CanWalkToMouse()) {
             HandleSettingTarget(ScreenUtils.WorldMouse(), null);
         }
         isInputLocked = false;
@@ -140,5 +141,5 @@ public class PlayerController : MonoBehaviour {
         None,
         Mouse
     }
-    public void ChangeInputLocked(bool v) => isInputLocked = v;
+    public void ChangeInputLocked(bool v) => isForcedInputLock = v;
 }
