@@ -25,6 +25,8 @@ public class MagicOrchestrator : EventOrchestrator {
     };
     public Dictionary<string, bool> events = new Dictionary<string, bool>()
     {
+        { "VaseIsBroken", false },
+        { "DoorIsClosedForever", false },
         { "firstTimeWithCat", false },
         { "firstTimeInHouseWithCat", false },
         { "Ladder", false},
@@ -79,6 +81,7 @@ public class MagicOrchestrator : EventOrchestrator {
             firstTimeInMagic = false;
         }
         if (items["Berry"]) Destroy(InteractionManager.inst.GetClickable("Berry").gameObject);
+        if (events["DoorIsClosedForever"]) Destroy(GameObject.Find("GreenDoor").gameObject);
     }
     private void HandleLake()
     {
@@ -188,6 +191,7 @@ public class MagicOrchestrator : EventOrchestrator {
             GameObject.Find("CatCooking").SetActive(false);
             GameObject.Find("Observe1").SetActive(false);
         }
+        if (events["VaseIsBroken"]) Destroy(GameObject.Find("Vase"));
     }
     private void HandleBedroom()
     {

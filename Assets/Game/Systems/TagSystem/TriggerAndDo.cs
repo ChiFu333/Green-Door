@@ -19,6 +19,7 @@ public class TriggerAndDo : MonoBehaviour
             else
             {
                 DialogueSystem.inst.StartDialogue(FindObjectOfType<MagicOrchestrator>().castedData.CatIsAngry);
+                Destroy(GameObject.Find("Vase"));
             }
             Destroy(gameObject);
         }
