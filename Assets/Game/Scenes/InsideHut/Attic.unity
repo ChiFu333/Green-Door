@@ -614,7 +614,7 @@ MonoBehaviour:
   <isReachableEverywhere>k__BackingField: 0
   targetPosition: {fileID: 0}
   itemData: {fileID: 11400000, guid: f8748d80bf763984a966d649a749f932, type: 2}
-  itemTaked: {fileID: 0}
+  itemTaked: {fileID: 8300000, guid: 12d2795abccdef44fac2c2d5f84c142a, type: 3}
   AfterUseCallback:
     m_PersistentCalls:
       m_Calls: []
