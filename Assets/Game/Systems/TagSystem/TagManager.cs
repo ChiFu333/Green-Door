@@ -44,4 +44,8 @@ public class TagManager : MonoBehaviour {
         }
         return true;
     }
+
+    private void Start() {
+        state = new int[9] { 2, 1, 4, 1, 5, 9, 3, 3, 0 };
+    }
 }
