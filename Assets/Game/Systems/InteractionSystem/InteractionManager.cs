@@ -4,6 +4,7 @@ using UnityEngine;
 public class InteractionManager : MonoBehaviour {
     public static InteractionManager inst { get; private set; }
     private readonly Dictionary<string, ClickableThing> sceneClickables = new Dictionary<string, ClickableThing>();
+    public bool isLocked = false;
     private void Update() {
         HandleInteractions();
     }
@@ -24,6 +25,7 @@ public class InteractionManager : MonoBehaviour {
 
     private void HandleInteractions() {
         if (!Input.GetMouseButtonDown(0)) return;
+        if (isLocked) return;
         if (DialogueSystem.inst.IsFrozen()) return;
         List<GameObject> objects = ScreenUtils.GetObjectsUnderMouse();
         for (int i = 0; i < objects.Count; i++) {
