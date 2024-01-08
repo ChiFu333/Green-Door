@@ -58,12 +58,13 @@ public class HardwareCursorManager : MonoBehaviour {
             currentHoveredChanger = null;
         }
     }
-
+#if UNITY_EDITOR
     [MenuItem("GameObject/Delta/HardwareCursorManager")]
     private static void CreateHardwareCursorManager() {
         GameObject hcmo = new GameObject("HardwareCursorManager");
         hcmo.AddComponent<HardwareCursorManager>();
     }
+#endif
     #endregion
 
     #region Singleton
