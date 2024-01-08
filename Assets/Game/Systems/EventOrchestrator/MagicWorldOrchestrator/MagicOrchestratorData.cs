@@ -45,7 +45,8 @@ public class MagicOrchestratorData : OrchestratorDataSO {
     }
     public void StopPlayerMove()
     {
-        Player.inst.controller.ChangeInputLocked(false);
+        HardwareCursorManager.inst.isWorld = false;
+        Player.inst.controller.ChangeInputLocked(true);
     }
     public void LoadScene(string name)
     {
