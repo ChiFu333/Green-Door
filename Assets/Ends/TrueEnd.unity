@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0ba02f0c9c84194f95cbe768943d1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 6a46732aa3aab8343ac372ad305fdc02, type: 3}
+  clip: {fileID: 8300000, guid: 3ab82136d46d7de41947e3ff6a3b74de, type: 3}
   isMusic: 1
 --- !u!4 &405332141
 Transform:
@@ -331,7 +331,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4afd750e16b64e841ba2d52b42ba86a1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd7c3d5f4d996794db11e5b8ed626f48, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -384,8 +384,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13.234, y: 231}
-  m_SizeDelta: {x: 794.45, y: 257.76}
+  m_AnchoredPosition: {x: 0, y: 235}
+  m_SizeDelta: {x: 913.57, y: 252.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &791667061
 MonoBehaviour:
@@ -407,7 +407,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0412\u044B \u0441\u0431\u0435\u0436\u0430\u043B\u0438 \u0438 "
+  m_text: "\u0412\u044B \u0441\u0431\u0435\u0436\u0430\u043B\u0438 \u0438\u0437 \u0432\u043E\u043B\u0448\u0435\u043D\u043E\u0433\u043E
+    \u043C\u0438\u0440\u0430 \u0438 \u0432\u044B\u0436\u0438\u043B\u0438"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f7747aede79bf409039b333da9953a, type: 2}
   m_sharedMaterial: {fileID: -8197927813082724838, guid: c8f7747aede79bf409039b333da9953a, type: 2}
