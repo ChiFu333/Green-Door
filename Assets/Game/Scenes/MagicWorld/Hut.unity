@@ -235,7 +235,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 87bc44830da063e458af303d2df2c278, type: 3}
-  volume: 1.4
   isMusic: 1
 --- !u!4 &85857827
 Transform:
@@ -576,7 +575,7 @@ MonoBehaviour:
   imageBoxPrefab: {fileID: 6280215002228502238, guid: 938a262a57d166f4fae8da22f5f264e7, type: 3}
   walkQuery:
     <clip>k__BackingField: {fileID: 8300000, guid: c8c93f5fbae86ab499cf5a71b04d4ed6, type: 3}
-    <pitchVariance>k__BackingField: 0.2
+    <pitchVariance>k__BackingField: 0
   timerHolder: {fileID: 6280215002228502238, guid: dd5616bf2f502ed49808495a21a46753, type: 3}
 --- !u!4 &463983284
 Transform:
