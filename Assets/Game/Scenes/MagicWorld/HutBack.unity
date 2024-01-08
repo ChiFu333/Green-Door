@@ -2496,7 +2496,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   itemData: {fileID: 0}
-  itemTaked: {fileID: 8300000, guid: a41af077e91ff6049b716225af86367b, type: 3}
+  itemTaked: {fileID: 8300000, guid: 6519808626bf92649a91ab86aa0bce91, type: 3}
   AfterUseCallback:
     m_PersistentCalls:
       m_Calls:
