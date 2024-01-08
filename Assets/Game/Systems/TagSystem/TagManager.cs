@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class TagManager : MonoBehaviour {
-    public int[] state = new int[9] { 9, 1, 3, 4, 5, 2, 1, 3, 0 }; //L - 1, след поворот против часовой 9 - клетка без провода 0 - нет клетки 5 - горизонт.
+    public int[] state = new int[9] { 2, 1, 4, 1, 5, 9, 3, 3, 0 }; //L - 1, след поворот против часовой 9 - клетка без провода 0 - нет клетки 5 - горизонт.
+    // { 2, 1, 4, 1, 5, 9, 3, 3, 0 } - startPos
     private const int SIZE = 170; //массив идёт сверзу вниз слева направо
     [SerializeField] private UnityEvent afterComplete = new UnityEvent();
     public void MoveBlock(GameObject block) {

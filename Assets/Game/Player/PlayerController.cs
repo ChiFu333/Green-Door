@@ -140,4 +140,5 @@ public class PlayerController : MonoBehaviour {
         None,
         Mouse
     }
+    public void ChangeInputLocked(bool v) => isInputLocked = v;
 }
