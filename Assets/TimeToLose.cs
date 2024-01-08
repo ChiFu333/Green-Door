@@ -31,6 +31,10 @@ public class TimeToLose : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(Timer());
     }
+    public void StopTimer()
+    {
+        StopAllCoroutines();
+    }
     private IEnumerator Timer()
     {
         if(text == null)

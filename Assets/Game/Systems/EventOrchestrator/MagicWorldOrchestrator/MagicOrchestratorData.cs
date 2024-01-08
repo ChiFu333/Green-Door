@@ -12,6 +12,7 @@ public class MagicOrchestratorData : OrchestratorDataSO {
     [field: SerializeField] public DialogueSO ThinksAboutMushroom { get; private set; }
     [field: SerializeField] public DialogueSO DrinkAndSleep { get; private set; }
     [field: SerializeField] public DialogueSO Attention { get; private set; }
+    
     [field: SerializeField] public ItemDataSO key;
     public void ForceExitFromHut()
     {
@@ -41,5 +42,13 @@ public class MagicOrchestratorData : OrchestratorDataSO {
     public void StartTimer(int time)
     {
         FindObjectOfType<TimeToLose>().StartTimer(time);
+    }
+    public void StopPlayerMove()
+    {
+        Player.inst.controller.ChangeInputLocked(false);
+    }
+    public void LoadScene(string name)
+    {
+        SceneLoader.inst.LoadScene(name);
     }
 }
