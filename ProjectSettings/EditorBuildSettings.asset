@@ -53,4 +53,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Ends/BadEnd.unity
     guid: d0a6b1b99ffad9a459d91dbe3229ae37
+  - enabled: 1
+    path: Assets/Ends/SubEnd.unity
+    guid: f245709656ce0ee4983561519caf1562
+  - enabled: 1
+    path: Assets/Ends/TrueEnd.unity
+    guid: 012defd2b7abadb4a97be064967eb429
   m_configObjects: {}

@@ -21,3 +21,4 @@ MonoBehaviour:
   <ThinksAboutMushroom>k__BackingField: {fileID: 11400000, guid: d5ce9578bf018824781dfcb11f462ada, type: 2}
   <DrinkAndSleep>k__BackingField: {fileID: 11400000, guid: cec8ce9e1e1b0e3458137ef1eb639f9c, type: 2}
   <Attention>k__BackingField: {fileID: 11400000, guid: 21f9debee13dee84892a23a828e39d22, type: 2}
+  key: {fileID: 11400000, guid: 43012f44776606f49846621f5718691d, type: 2}

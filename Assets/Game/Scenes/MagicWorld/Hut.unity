@@ -342,7 +342,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 60
+          m_IntArgument: 40
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2190,6 +2190,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTime: 0
   timeIsComing: 0
+  AQ:
+    <clip>k__BackingField: {fileID: 8300000, guid: ec08cbc429d5cd14abad5b7537ce4217, type: 3}
+    <pitchVariance>k__BackingField: 0
 --- !u!4 &1373761182
 Transform:
   m_ObjectHideFlags: 0
