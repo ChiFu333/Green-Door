@@ -12,7 +12,7 @@ public class MagicOrchestratorData : OrchestratorDataSO {
     [field: SerializeField] public DialogueSO ThinksAboutMushroom { get; private set; }
     [field: SerializeField] public DialogueSO DrinkAndSleep { get; private set; }
     [field: SerializeField] public DialogueSO Attention { get; private set; }
-
+    [field: SerializeField] public ItemDataSO key;
     public void ForceExitFromHut()
     {
         SceneLoader.inst.LoadScene("Hut");

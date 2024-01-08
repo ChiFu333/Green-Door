@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MagicOrchestrator : EventOrchestrator {
     private bool firstTimeInMagic = true;
+    
     public Dictionary<string, bool> items = new Dictionary<string, bool>()
     {
         { "Cattail", false},
@@ -17,7 +19,8 @@ public class MagicOrchestrator : EventOrchestrator {
         { "FishingRod", false },
         { "Fish", false },
         { "Mushroom", false},
-        { "Key", false }
+        { "Key", false },
+        { "DELETEKEY", false }
         
     };
     public Dictionary<string, bool> events = new Dictionary<string, bool>()
@@ -30,7 +33,9 @@ public class MagicOrchestrator : EventOrchestrator {
         { "BirdRemoved", false},
         { "TreeWatered", false},
         { "TeaIsPoisoned", false},
-        { "CatIsSleeping", false}
+        { "CatIsSleeping", false},
+        { "BasementIsFound", false },
+        { "LockIsUnlock", false }
     };
     public MagicOrchestratorData castedData;
     public override void Setup(OrchestratorDataSO data) {
@@ -100,6 +105,7 @@ public class MagicOrchestrator : EventOrchestrator {
         if (events["CatIsSleeping"])
         {
             Destroy(GameObject.Find("CatSitting"));
+            if (items["DELETEKEY"]) PlayerInventory.inst.RemoveItem(castedData.key);
         }
         else
         {
@@ -186,5 +192,20 @@ public class MagicOrchestrator : EventOrchestrator {
     private void HandleBedroom()
     {
         if (items["Bucket"]) Destroy(InteractionManager.inst.GetClickable("Bucket").gameObject);
+        if (!events["BasementIsFound"])
+        {
+            GameObject.Find("Trap").SetActive(false);
+            GameObject.Find("Basement").SetActive(false);
+        }
+        else if (!events["LockIsUnlock"])
+        {
+            GameObject.Find("Carpet").SetActive(false);
+            GameObject.Find("Basement").SetActive(false);
+        }
+        else
+        {
+            GameObject.Find("Carpet").SetActive(false);
+            GameObject.Find("Trap").SetActive(false);
+        }
     }
 }

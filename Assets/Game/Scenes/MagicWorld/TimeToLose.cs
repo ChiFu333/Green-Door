@@ -10,6 +10,7 @@ public class TimeToLose : MonoBehaviour
     public int myTime;
     public bool timeIsComing = false;
     private GameObject timeHolder;
+    [SerializeField] private AudioQuery AQ;
     public void Awake()
     {
         if (inst != null && inst != this)
@@ -44,6 +45,8 @@ public class TimeToLose : MonoBehaviour
         myTime--;
         if(myTime <= 0)
         {
+            AudioManager.inst.Play(AQ);
+            timeIsComing = false;
             SceneLoader.inst.LoadScene("BadEnd", false);
         }
         else

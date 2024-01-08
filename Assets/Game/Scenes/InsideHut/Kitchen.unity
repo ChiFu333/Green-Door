@@ -211,7 +211,7 @@ MonoBehaviour:
   <isReachableEverywhere>k__BackingField: 0
   targetPosition: {fileID: 0}
   itemData: {fileID: 11400000, guid: 0e11d73c36d0eb6418a7585978560286, type: 2}
-  itemTaked: {fileID: 0}
+  itemTaked: {fileID: 8300000, guid: 12d2795abccdef44fac2c2d5f84c142a, type: 3}
   AfterUseCallback:
     m_PersistentCalls:
       m_Calls: []
@@ -2198,12 +2198,11 @@ MonoBehaviour:
   <isReachableEverywhere>k__BackingField: 1
   targetPosition: {fileID: 0}
   phrase:
-    <character>k__BackingField: {fileID: 11400000, guid: 755a9391eb3caea46b4149f8b5f5fb05, type: 2}
+    <character>k__BackingField: {fileID: 11400000, guid: 9f693c86201eb614ab044d20ed21bc1a, type: 2}
     <precallback>k__BackingField:
       m_PersistentCalls:
         m_Calls: []
-    <text>k__BackingField: "\u0421\u0447\u0430\u0441\u043B\u0438\u0432\u044B\u0435
-      \u0447\u0430\u0441\u043E\u0432 \u043D\u0435 \u043D\u0430\u0431\u043B\u044E\u0434\u0430\u044E\u04421"
+    <text>k__BackingField: "\u0421\u0435\u0439\u0447\u0430\u0441 \u043F\u043E\u043B\u0434\u0435\u043D\u044C"
     <callback>k__BackingField:
       m_PersistentCalls:
         m_Calls: []
