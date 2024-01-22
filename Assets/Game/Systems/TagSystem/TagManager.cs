@@ -38,9 +38,10 @@ public class TagManager : MonoBehaviour {
         return state[index] == 0;
     }
     public bool IsComplete() {
-        int[] win = new int[9] { 9, 1, 3, 4, 5, 2, 1, 3, 0 };
+        int[] win1 = new int[9] { 9, 1, 3, 4, 5, 2, 1, 3, 0 };
+        int[] win2 = new int[9] { 0, 1, 3, 4, 5, 2, 1, 3, 9 };
         for (int i = 0; i < 9; i++) {
-            if (state[i] != win[i]) return false;
+            if (state[i] != win1[i] && state[i] != win2[i]) return false;
         }
         return true;
     }

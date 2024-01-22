@@ -1,12 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MagicOrchestrator : EventOrchestrator {
     private bool firstTimeInMagic = true;
-    
-    public Dictionary<string, bool> items = new Dictionary<string, bool>()
+    private readonly Dictionary<string, bool> itemsState = new Dictionary<string, bool>()
     {
         { "Cattail", false},
         { "Cattail2", false},
@@ -22,7 +20,7 @@ public class MagicOrchestrator : EventOrchestrator {
         { "DELETEKEY", false }
         
     };
-    public Dictionary<string, bool> events = new Dictionary<string, bool>()
+    private readonly Dictionary<string, bool> eventsState = new Dictionary<string, bool>()
     {
         { "VaseIsBroken", false },
         { "DoorIsClosedForever", false },
@@ -38,11 +36,20 @@ public class MagicOrchestrator : EventOrchestrator {
         { "BasementIsFound", false },
         { "LockIsUnlock", false }
     };
+    public Dictionary<string, bool> items;
+    public Dictionary<string, bool> events;
     public MagicOrchestratorData castedData;
     public override void Setup(OrchestratorDataSO data) {
         base.Setup(data);
         castedData = (MagicOrchestratorData)data;
     }
+
+    public override void ResetState() {
+        firstTimeInMagic = true;
+        items = new Dictionary<string, bool>(itemsState);
+        events = new Dictionary<string, bool>(eventsState);
+    }
+
     public override void HandleScenes() {
         if (Player.inst != null) Player.inst.controller.TeleportTo(GetSpawnPosition());
         //Handle per-scene logic
@@ -122,18 +129,18 @@ public class MagicOrchestrator : EventOrchestrator {
     {
         if (!events["Ladder"])
         {
-            GameObject.Find("LadderBroken").gameObject.SetActive(false);
-            GameObject.Find("LadderWorking").gameObject.SetActive(false);
+            GameObject.Find("LadderBroken").SetActive(false);
+            GameObject.Find("LadderWorking").SetActive(false);
         }
         else if (!events["LadderBroken"])
         {
-            GameObject.Find("Ladder").gameObject.SetActive(false);
-            GameObject.Find("LadderWorking").gameObject.SetActive(false);
+            GameObject.Find("Ladder").SetActive(false);
+            GameObject.Find("LadderWorking").SetActive(false);
         }
         else
         {
-            GameObject.Find("Ladder").gameObject.SetActive(false);
-            GameObject.Find("LadderBroken").gameObject.SetActive(false);
+            GameObject.Find("Ladder").SetActive(false);
+            GameObject.Find("LadderBroken").SetActive(false);
         }
         if (items["WaterBucket"]) Destroy(InteractionManager.inst.GetClickable("Well").gameObject);
     }

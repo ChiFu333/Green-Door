@@ -13,11 +13,17 @@ public class WorldOrchestrator : EventOrchestrator {
         castedData = (WorldOrchestratorData)data;
     }
 
+    public override void ResetState() {
+        firstTimeAtHome = true;
+        isDoorUnlocked = false;
+        isSchoolAlreadyVisited = false;
+    }
+
     public override void HandleScenes() {
         //Handle spawn positioning
         if (Player.inst != null) Player.inst.controller.TeleportTo(GetSpawnPosition());
             //Handle per-scene logic
-            switch (SceneManager.GetActiveScene().name) {
+        switch (SceneManager.GetActiveScene().name) {
             case "MyHouse":
                 HandleHouse();
                 break;
@@ -28,7 +34,6 @@ public class WorldOrchestrator : EventOrchestrator {
                 HandleStreet();
                 break;
             case "CheckTime":
-                HandleTimeCheck();
                 break;
         }
     }
@@ -66,10 +71,6 @@ public class WorldOrchestrator : EventOrchestrator {
         } else {
             Instantiate(castedData.streetPropsPrefab);
         }
-    }
-
-    private void HandleTimeCheck() {
-        
     }
     #endregion
 }
