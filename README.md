@@ -4,7 +4,7 @@
 ![Static Badge](https://img.shields.io/badge/Stack-Unity_%2B_%D0%A1%23-green?color=34C924)
 ![Static Badge](https://img.shields.io/badge/December_2023,_January_2024-8A2BE2)
 
-Данная игра была сделана в рамках ![небольшого геймджема](https://itch.io/jam/game-jam-of-24th-year) совместо с [Дельтой](https://github.com/SergeyFeduk).
+Данная игра была сделана в рамках [небольшого геймджема](https://itch.io/jam/game-jam-of-24th-year) совместо с [Дельтой](https://github.com/SergeyFeduk).
 
 Была разработана за 2 недели, что для меня было первым "крупным" проектом для геймджема, в отличии от других, где на разработку уходит около 3-4 дней.<br>
 
