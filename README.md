@@ -1,8 +1,8 @@
 ![C2tShw](https://github.com/user-attachments/assets/befb17b8-162a-41c4-b1b4-b7739e7c417d)
 
 # Green Door (Зелёная Дверь)
-
-Декабрь 2023 - Январь 2024
+![Static Badge](https://img.shields.io/badge/Stack-Unity_%2B_%D0%A1%23-green?color=34C924)
+![Static Badge](https://img.shields.io/badge/December_2023,_January_2024-8A2BE2)
 
 Данная игра была сделана в рамках ![небольшого геймджема](https://itch.io/jam/game-jam-of-24th-year) совместо с ![Дельтой](https://github.com/SergeyFeduk).
 
